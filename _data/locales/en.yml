@@ -5,16 +5,16 @@
 layout:
   post: Post
   category: Category
-  tag: Tag
+  tag: Skills
 
 # The tabs of sidebar
 tabs:
   # format: <filename_without_extension>: <value>
   home: Home
-  categories: Categories
-  tags: Tags
-  archives: Archives
-  about: About
+  categories: Portfolio
+  tags: Skills
+  archives: Contact Me
+  about: Resume
 
 # the text displayed in the search bar & search results
 search:
@@ -23,8 +23,8 @@ search:
   no_results: Oops! No results found.
 
 panel:
-  lastmod: Recently Updated
-  trending_tags: Trending Tags
+  lastmod: Pages
+  trending_tags: Skills
   toc: Contents
 
 copyright:

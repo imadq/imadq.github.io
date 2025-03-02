@@ -1,505 +1,383 @@
 ---
-title: Writing a New Post
-author: cotes
-date: 2019-08-08 14:10:00 +0800
-categories: [Blogging, Tutorial]
-tags: [writing]
-render_with_liquid: false
+title: "Advanced AI and Data Intelligence Solutions"
+author: "Imad Qureshi"
+date: 2025-02-28 00:00:00 +0000
+categories: [Services]
+tags: [AI, Machine-Learning, Chatbots, GPT, Automation, Web-Scraping, Data-Extraction]
+pin: true
+pin_order: 2
 ---
 
-This tutorial will guide you how to write a post in the _Chirpy_ template, and it's worth reading even if you've used Jekyll before, as many features require specific variables to be set.
+Transform Your Business with Intelligent AI Integrations and Data Extraction
 
-## Naming and Path
+Harness the power of Artificial Intelligence and advanced web scraping to drive innovation, automate complex tasks, and elevate your decision-making capabilities. My specialized experience in AI-driven solutions enables businesses to integrate state-of-the-art technology into their workflows, generating smarter insights, predictive analytics, and personalized interactions through intelligent data collection and analysis.
 
-Create a new file named `YYYY-MM-DD-TITLE.EXTENSION`{: .filepath} and put it in the `_posts`{: .filepath} of the root directory. Please note that the `EXTENSION`{: .filepath} must be one of `md`{: .filepath} and `markdown`{: .filepath}. If you want to save time of creating files, please consider using the plugin [`Jekyll-Compose`](https://github.com/jekyll/jekyll-compose) to accomplish this.
+## 🔑 Core AI Services
 
-## Front Matter
+### Web Scraping & Automated Data Collection
+Custom data extraction solutions that ethically harvest information from websites, databases, and online platforms to fuel your AI systems with high-quality, relevant data.
 
-Basically, you need to fill the [Front Matter](https://jekyllrb.com/docs/front-matter/) as below at the top of the post:
+### Automation & Scripting Solutions
+End-to-end workflow automation systems that eliminate repetitive tasks, reduce errors, and free up valuable employee time through intelligent process orchestration and scheduling.
 
-```yaml
----
-title: TITLE
-date: YYYY-MM-DD HH:MM:SS +/-TTTT
-categories: [TOP_CATEGORIE, SUB_CATEGORIE]
-tags: [TAG]     # TAG names should always be lowercase
----
+### Custom GPT Development
+Tailor-made AI assistants using OpenAI's GPT models for customer support, internal workflows, and enhanced productivity.
+
+### AI Chatbots & Virtual Assistants
+Intelligent, responsive chatbots that manage client interactions 24/7, automate customer service, and streamline communication.
+
+### Predictive Analytics & Machine Learning Models
+Data-driven forecasts and trend analyses that enable smarter business decisions in areas such as sales, inventory, and resource planning.
+
+### Sentiment & Text Analytics
+Advanced natural language processing (NLP) solutions to analyze customer feedback, reviews, and social media for real-time insights.
+
+### Automation Enhanced by AI
+Integrate AI into automation solutions to dynamically manage and optimize your business processes.
+
+## 📌 Project Highlights
+
+### 🎬 IMDB AI Review Summarization System
+
+<div class="project-showcase">
+  <div class="project-header">
+    <span class="badge">Python</span>
+    <span class="badge">OpenAI</span>
+    <span class="badge">Web Scraping</span>
+    <span class="badge">NLP</span>
+  </div>
+</div>
+
+> "Transforming thousands of user reviews into actionable insights with AI-powered web scraping"
+{: .prompt-info }
+
+Developed a sophisticated Python-based system that scrapes IMDb's most popular TV shows, extracts user reviews, and leverages OpenAI's GPT-3.5 to generate concise, insightful summaries of viewer opinions. The system handles data extraction, cleaning, and AI-powered analysis to transform lengthy, diverse reviews into actionable insights about show reception.
+
+#### Key Features:
+
+* **Advanced Web Scraping Architecture** with dynamic page handling and anti-blocking measures
+* **Automated Data Collection** from IMDb's Most Popular TV Shows
+* **Intelligent Review Extraction** with error handling and rate limiting
+* **AI-Powered Summarization** using OpenAI's GPT-3.5
+* **Multi-format Output** in both JSON and CSV for analytics integration
+
+#### Sample Code Snippet:
+
+```python
+def extract_json_data(html_content: str) -> dict:
+    """Extract the JSON data from the script tag."""
+    pattern = r'<script type="application/ld\+json">(.*?)</script>'
+    match = re.search(pattern, html_content, re.DOTALL)
+    if match:
+        try:
+            json_data = json.loads(match.group(1))
+            return json_data
+        except json.JSONDecodeError as e:
+            print(f"Error decoding JSON: {e}")
+    return None
+
+def scrape_imdb_page(url: str, headers: dict) -> str:
+    """Scrape an IMDb page with proper handling for rate limits and blocks."""
+    try:
+        # Randomize request delay to mimic human behavior
+        time.sleep(random.uniform(1.0, 3.0))
+        
+        # Make request with rotating user agents
+        response = requests.get(url, headers=headers, timeout=10)
+        
+        # Check for successful response
+        if response.status_code == 200:
+            return response.text
+        elif response.status_code == 429:
+            # Handle rate limiting
+            print(f"Rate limited. Waiting before retry...")
+            time.sleep(30)  # Wait longer before retry
+            return scrape_imdb_page(url, headers)  # Recursive retry
+        else:
+            print(f"Failed to retrieve page: Status code {response.status_code}")
+            return None
+    except Exception as e:
+        print(f"Error scraping page {url}: {e}")
+        return None
+
+def summarize_reviews(reviews: List[str], show_title: str) -> str:
+    """Summarize reviews using OpenAI API."""
+    if not reviews:
+        return "No reviews available."
+    
+    try:
+        # Set up the client with the API key
+        client = openai.OpenAI(api_key=api_key)
+        
+        # Prepare the prompt
+        prompt = f"Here are some reviews for the TV show '{show_title}':\n\n"
+        for i, review in enumerate(reviews[:5]):
+            prompt += f"Review {i+1}: {review[:500]}...\n\n"
+        prompt += f"\nPlease provide a concise summary of these reviews, highlighting common opinions about '{show_title}'."
+        
+        # Make the API call
+        response = client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "system", "content": "You are a helpful assistant that summarizes TV show reviews."},
+                {"role": "user", "content": prompt}
+            ],
+            max_tokens=250
+        )
+        
+        # Extract the summary
+        summary = response.choices[0].message.content.strip()
+        return summary
+    
+    except Exception as e:
+        print(f"Error summarizing reviews for {show_title}: {e}")
+        return f"Found {len(reviews)} reviews. Sample: '{reviews[0][:200]}...'"
 ```
 
-> The posts' _layout_ has been set to `post` by default, so there is no need to add the variable _layout_ in the Front Matter block.
+#### Results & Impact:
+
+* **Processed 25+ top TV shows** with thousands of user reviews
+* **Reduced review analysis time by 95%** compared to manual methods
+* **Generated nuanced summaries** capturing both praise and criticism
+* **Created structured datasets** ready for dashboard integration
+
+#### Example Output:
+
+<div class="output-example">
+  <div class="output-header">
+    <div class="output-title">AI-Generated Review Summary for "The Last of Us"</div>
+    <div class="output-meta">Based on analysis of 15 user reviews</div>
+  </div>
+  <div class="output-content">
+    <p>"Viewers praise The Last of Us for its faithful adaptation of the game, outstanding performances by Pedro Pascal and Bella Ramsey, and emotional storytelling. Many consider it one of the best video game adaptations ever made, with particular appreciation for the production quality and character development. While some episodes received more acclaim than others, the consensus is that the show successfully captures the heart of the source material while making it accessible to new audiences."</p>
+  </div>
+  <div class="output-metrics">
+    <div class="metric">
+      <div class="metric-value">8.8/10</div>
+      <div class="metric-label">Average Rating</div>
+    </div>
+    <div class="metric">
+      <div class="metric-value">95%</div>
+      <div class="metric-label">Positive Sentiment</div>
+    </div>
+    <div class="metric">
+      <div class="metric-value">250+</div>
+      <div class="metric-label">Reviews Analyzed</div>
+    </div>
+  </div>
+</div>
+
+<div class="workflow-diagram">
+  <div class="workflow-step">Advanced Web Scraping → Data Processing → AI Analysis → Insights Generation</div>
+</div>
+
+### E-commerce Price Monitoring System:
+Developed a sophisticated web scraping solution that monitors competitor pricing across multiple e-commerce platforms, enabling dynamic pricing strategies and resulting in a 15% revenue increase.
+
+### Custom AI Assistant Development:
+Developed personalized GPT-powered virtual assistants automating internal communications and customer interactions, reducing manual response times by 70%.
+
+### Sales & Demand Forecasting Models:
+Built predictive analytics models utilizing historical sales data, providing highly accurate demand forecasts and enabling more strategic inventory planning, reducing overstock costs by 35%.
+
+### Real-Time Sentiment Analysis:
+Implemented NLP-driven sentiment analysis tools providing instant insights into customer attitudes and brand perception, increasing customer satisfaction rates by 50%.
+
+## 🚀 Why Integrate AI & Web Scraping?
+
+- **Data-Driven Decision Making:** Access previously untapped data sources to inform strategic business decisions.
+- **Enhanced Efficiency:** Automate routine tasks and free your team to focus on strategic, high-value initiatives.
+- **Informed Decision-Making:** Leverage predictive analytics and deep insights for confident, proactive business decisions.
+- **Personalized Customer Experiences:** Deliver customized interactions at scale, boosting engagement and loyalty.
+- **Competitive Intelligence:** Monitor market trends, competitor activities, and industry developments in real-time.
+- **Continuous Improvement:** AI-driven insights enable constant optimization and smarter operational strategies.
+
+## 💡 Technical Capabilities
+
+My AI & data extraction toolkit includes:
+
+- **Advanced Web Scraping:** Expertise with Selenium, Playwright, and Scrapy for handling JavaScript-heavy sites and dynamic content
+- **Python & Data Science Libraries:** Expertise with BeautifulSoup, Requests, Pandas, and NumPy for data extraction and processing
+- **Natural Language Processing:** Implementation of advanced NLP techniques for text analysis and sentiment extraction
+- **API Integration:** Seamless connection with OpenAI's GPT models and other AI services
+- **Proxy Management:** Rotating proxies and user agents to ensure reliable data collection
+- **Data Transformation:** Converting raw, unstructured data into clean, structured formats for analysis
+- **Ethical Scraping Practices:** Adherence to robots.txt, rate limiting, and legal compliance
+
+## 📊 How I Can Help Your Business
+
+As an AI and data intelligence consultant, I work with businesses to identify opportunities where advanced data collection and AI can create the most value:
+
+<div class="consulting-approach">
+  <div class="approach-step">
+    <div class="approach-icon">🔍</div>
+    <div class="approach-content">
+      <h4>Assessment</h4>
+      <p>Evaluate your current processes and data needs to identify high-impact AI and web scraping opportunities</p>
+    </div>
+  </div>
+  <div class="approach-step">
+    <div class="approach-icon">🧩</div>
+    <div class="approach-content">
+      <h4>Solution Design</h4>
+      <p>Create a tailored implementation plan for data collection and AI analysis aligned with your business objectives</p>
+    </div>
+  </div>
+  <div class="approach-step">
+    <div class="approach-icon">⚙️</div>
+    <div class="approach-content">
+      <h4>Implementation</h4>
+      <p>Develop and deploy robust data collection and AI solutions with minimal disruption to your operations</p>
+    </div>
+  </div>
+  <div class="approach-step">
+    <div class="approach-icon">📈</div>
+    <div class="approach-content">
+      <h4>Optimization</h4>
+      <p>Continuously refine data collection methods and AI models to improve performance and ROI</p>
+    </div>
+  </div>
+</div>
+
+> **Tip:** Start with a focused implementation in one area of your business to demonstrate value before expanding.
 {: .prompt-tip }
 
-### Timezone of Date
-
-To accurately record the release date of a post, you should not only set up the `timezone` of `_config.yml`{: .filepath} but also provide the post's timezone in variable `date` of its Front Matter block. Format: `+/-TTTT`, e.g. `+0800`.
-
-### Categories and Tags
-
-The `categories` of each post are designed to contain up to two elements, and the number of elements in `tags` can be zero to infinity. For instance:
-
-```yaml
----
-categories: [Animal, Insect]
-tags: [bee]
----
-```
-
-### Author Information
-
-The author information of the post usually does not need to be filled in the _Front Matter_ , they will be obtained from variables `social.name` and the first entry of `social.links` of the configuration file by default. But you can also override it as follows:
-
-Adding author information in `_data/authors.yml` (If your website doesn't have this file, don't hesitate to create one).
-
-```yaml
-<author_id>:
-  name: <full name>
-  twitter: <twitter_of_author>
-  url: <homepage_of_author>
-```
-{: file="_data/authors.yml" }
-
-And then use `author` to specify a single entry or `authors` to specify multiple entries:
-
-```yaml
----
-author: <author_id>                     # for single entry
-# or
-authors: [<author1_id>, <author2_id>]   # for multiple entries
----
-```
-
-Having said that, the key `author` can also identify multiple entries.
-
-> The benefit of reading the author information from the file `_data/authors.yml`{: .filepath } is that the page will have the meta tag `twitter:creator`, which enriches the [Twitter Cards](https://developer.twitter.com/en/docs/twitter-for-websites/cards/guides/getting-started#card-and-content-attribution) and is good for SEO.
+> **Info:** Web scraping can be combined with GPT models to transform unstructured web data into actionable business intelligence.
 {: .prompt-info }
 
-### Post Description
-
-By default, the first words of the post are used to display on the home page for a list of posts, in the _Further Reading_ section, and in the XML of the RSS feed. If you don't want to display the auto-generated description for the post, you can customize it using the `description` field in the _Front Matter_ as follows:
-
-```yaml
----
-description: Short summary of the post.
----
-```
-
-Additionally, the `description` text will also be displayed under the post title on the post's page.
-
-## Table of Contents
-
-By default, the **T**able **o**f **C**ontents (TOC) is displayed on the right panel of the post. If you want to turn it off globally, go to `_config.yml`{: .filepath} and set the value of variable `toc` to `false`. If you want to turn off TOC for a specific post, add the following to the post's [Front Matter](https://jekyllrb.com/docs/front-matter/):
-
-```yaml
----
-toc: false
----
-```
-
-## Comments
-
-The global setting for comments is defined by the `comments.provider` option in the `_config.yml`{: .filepath} file. Once a comment system is selected for this variable, comments will be enabled for all posts.
-
-If you want to close the comment for a specific post, add the following to the **Front Matter** of the post:
-
-```yaml
----
-comments: false
----
-```
-
-## Media
-
-We refer to images, audio and video as media resources in _Chirpy_.
-
-### URL Prefix
-
-From time to time we have to define duplicate URL prefixes for multiple resources in a post, which is a boring task that you can avoid by setting two parameters.
-
-- If you are using a CDN to host media files, you can specify the `cdn` in `_config.yml`{: .filepath }. The URLs of media resources for site avatar and posts are then prefixed with the CDN domain name.
-
-  ```yaml
-  cdn: https://cdn.com
-  ```
-  {: file='_config.yml' .nolineno }
-
-- To specify the resource path prefix for the current post/page range, set `media_subpath` in the _front matter_ of the post:
-
-  ```yaml
-  ---
-  media_subpath: /path/to/media/
-  ---
-  ```
-  {: .nolineno }
-
-The option `site.cdn` and `page.media_subpath` can be used individually or in combination to flexibly compose the final resource URL: `[site.cdn/][page.media_subpath/]file.ext`
-
-### Images
-
-#### Caption
-
-Add italics to the next line of an image, then it will become the caption and appear at the bottom of the image:
-
-```markdown
-![img-description](/path/to/image)
-_Image Caption_
-```
-{: .nolineno}
-
-#### Size
-
-To prevent the page content layout from shifting when the image is loaded, we should set the width and height for each image.
-
-```markdown
-![Desktop View](/assets/img/sample/mockup.png){: width="700" height="400" }
-```
-{: .nolineno}
-
-> For an SVG, you have to at least specify its _width_, otherwise it won't be rendered.
-{: .prompt-info }
-
-Starting from _Chirpy v5.0.0_, `height` and `width` support abbreviations (`height` → `h`, `width` → `w`). The following example has the same effect as the above:
-
-```markdown
-![Desktop View](/assets/img/sample/mockup.png){: w="700" h="400" }
-```
-{: .nolineno}
-
-#### Position
-
-By default, the image is centered, but you can specify the position by using one of the classes `normal`, `left`, and `right`.
-
-> Once the position is specified, the image caption should not be added.
+> **Warning:** Always ensure proper data privacy measures and legal compliance when implementing web scraping and AI solutions.
 {: .prompt-warning }
 
-- **Normal position**
-
-  Image will be left aligned in below sample:
-
-  ```markdown
-  ![Desktop View](/assets/img/sample/mockup.png){: .normal }
-  ```
-  {: .nolineno}
-
-- **Float to the left**
-
-  ```markdown
-  ![Desktop View](/assets/img/sample/mockup.png){: .left }
-  ```
-  {: .nolineno}
-
-- **Float to the right**
-
-  ```markdown
-  ![Desktop View](/assets/img/sample/mockup.png){: .right }
-  ```
-  {: .nolineno}
-
-#### Dark/Light mode
-
-You can make images follow theme preferences in dark/light mode. This requires you to prepare two images, one for dark mode and one for light mode, and then assign them a specific class (`dark` or `light`):
-
-```markdown
-![Light mode only](/path/to/light-mode.png){: .light }
-![Dark mode only](/path/to/dark-mode.png){: .dark }
-```
-
-#### Shadow
-
-The screenshots of the program window can be considered to show the shadow effect:
-
-```markdown
-![Desktop View](/assets/img/sample/mockup.png){: .shadow }
-```
-{: .nolineno}
-
-#### Preview Image
-
-If you want to add an image at the top of the post, please provide an image with a resolution of `1200 x 630`. Please note that if the image aspect ratio does not meet `1.91 : 1`, the image will be scaled and cropped.
-
-Knowing these prerequisites, you can start setting the image's attribute:
-
-```yaml
----
-image:
-  path: /path/to/image
-  alt: image alternative text
----
-```
-
-Note that the [`media_subpath`](#url-prefix) can also be passed to the preview image, that is, when it has been set, the attribute `path` only needs the image file name.
-
-For simple use, you can also just use `image` to define the path.
-
-```yml
----
-image: /path/to/image
----
-```
-
-#### LQIP
-
-For preview images:
-
-```yaml
----
-image:
-  lqip: /path/to/lqip-file # or base64 URI
----
-```
-
-> You can observe LQIP in the preview image of post \"[Text and Typography](../text-and-typography/)\".
-
-For normal images:
-
-```markdown
-![Image description](/path/to/image){: lqip="/path/to/lqip-file" }
-```
-{: .nolineno }
-
-### Video
-
-#### Social Media Platform
-
-You can embed videos from social media platforms with the following syntax:
-
-```liquid
-{% include embed/{Platform}.html id='{ID}' %}
-```
-
-Where `Platform` is the lowercase of the platform name, and `ID` is the video ID.
-
-The following table shows how to get the two parameters we need in a given video URL, and you can also know the currently supported video platforms.
-
-| Video URL                                                                                          | Platform   | ID             |
-| -------------------------------------------------------------------------------------------------- | ---------- | :------------- |
-| [https://www.**youtube**.com/watch?v=**H-B46URT4mg**](https://www.youtube.com/watch?v=H-B46URT4mg) | `youtube`  | `H-B46URT4mg`  |
-| [https://www.**twitch**.tv/videos/**1634779211**](https://www.twitch.tv/videos/1634779211)         | `twitch`   | `1634779211`   |
-| [https://www.**bilibili**.com/video/**BV1Q44y1B7Wf**](https://www.bilibili.com/video/BV1Q44y1B7Wf) | `bilibili` | `BV1Q44y1B7Wf` |
-
-#### Video Files
-
-If you want to embed a video file directly, use the following syntax:
-
-```liquid
-{% include embed/video.html src='{URL}' %}
-```
-
-Where `URL` is a URL to a video file e.g. `/path/to/sample/video.mp4`.
-
-You can also specify additional attributes for the embedded video file. Here is a full list of attributes allowed.
-
-- `poster='/path/to/poster.png'` — poster image for a video that is shown while video is downloading
-- `title='Text'` — title for a video that appears below the video and looks same as for images
-- `autoplay=true` — video automatically begins to play back as soon as it can
-- `loop=true` — automatically seek back to the start upon reaching the end of the video
-- `muted=true` — audio will be initially silenced
-- `types` — specify the extensions of additional video formats separated by `|`. Ensure these files exist in the same directory as your primary video file.
-
-Consider an example using all of the above:
-
-```liquid
-{%
-  include embed/video.html
-  src='/path/to/video.mp4'
-  types='ogg|mov'
-  poster='poster.png'
-  title='Demo video'
-  autoplay=true
-  loop=true
-  muted=true
-%}
-```
-
-### Audios
-
-If you want to embed an audio file directly, use the following syntax:
-
-```liquid
-{% include embed/audio.html src='{URL}' %}
-```
-
-Where `URL` is a URL to an audio file e.g. `/path/to/audio.mp3`.
-
-You can also specify additional attributes for the embedded audio file. Here is a full list of attributes allowed.
-
-- `title='Text'` — title for an audio that appears below the audio and looks same as for images
-- `types` — specify the extensions of additional audio formats separated by `|`. Ensure these files exist in the same directory as your primary audio file.
-
-Consider an example using all of the above:
-
-```liquid
-{%
-  include embed/audio.html
-  src='/path/to/audio.mp3'
-  types='ogg|wav|aac'
-  title='Demo audio'
-%}
-```
-
-## Pinned Posts
-
-You can pin one or more posts to the top of the home page, and the fixed posts are sorted in reverse order according to their release date. Enable by:
-
-```yaml
----
-pin: true
----
-```
-
-## Prompts
-
-There are several types of prompts: `tip`, `info`, `warning`, and `danger`. They can be generated by adding the class `prompt-{type}` to the blockquote. For example, define a prompt of type `info` as follows:
-
-```md
-> Example line for prompt.
-{: .prompt-info }
-```
-{: .nolineno }
-
-## Syntax
-
-### Inline Code
-
-```md
-`inline code part`
-```
-{: .nolineno }
-
-### Filepath Highlight
-
-```md
-`/path/to/a/file.extend`{: .filepath}
-```
-{: .nolineno }
-
-### Code Block
-
-Markdown symbols ```` ``` ```` can easily create a code block as follows:
-
-````md
-```
-This is a plaintext code snippet.
-```
-````
-
-#### Specifying Language
-
-Using ```` ```{language} ```` you will get a code block with syntax highlight:
-
-````markdown
-```yaml
-key: value
-```
-````
-
-> The Jekyll tag `{% highlight %}` is not compatible with this theme.
-{: .prompt-danger }
-
-#### Line Number
-
-By default, all languages except `plaintext`, `console`, and `terminal` will display line numbers. When you want to hide the line number of a code block, add the class `nolineno` to it:
-
-````markdown
-```shell
-echo 'No more line numbers!'
-```
-{: .nolineno }
-````
-
-#### Specifying the Filename
-
-You may have noticed that the code language will be displayed at the top of the code block. If you want to replace it with the file name, you can add the attribute `file` to achieve this:
-
-````markdown
-```shell
-# content
-```
-{: file="path/to/file" }
-````
-
-#### Liquid Codes
-
-If you want to display the **Liquid** snippet, surround the liquid code with `{% raw %}` and `{% endraw %}`:
-
-````markdown
-{% raw %}
-```liquid
-{% if product.title contains 'Pack' %}
-  This product's title contains the word Pack.
-{% endif %}
-```
-{% endraw %}
-````
-
-Or adding `render_with_liquid: false` (Requires Jekyll 4.0 or higher) to the post's YAML block.
-
-## Mathematics
-
-We use [**MathJax**][mathjax] to generate mathematics. For website performance reasons, the mathematical feature won't be loaded by default. But it can be enabled by:
-
-[mathjax]: https://www.mathjax.org/
-
-```yaml
----
-math: true
----
-```
-
-After enabling the mathematical feature, you can add math equations with the following syntax:
-
-- **Block math** should be added with `$$ math $$` with **mandatory** blank lines before and after `$$`
-  - **Inserting equation numbering** should be added with `$$\begin{equation} math \end{equation}$$`
-  - **Referencing equation numbering** should be done with `\label{eq:label_name}` in the equation block and `\eqref{eq:label_name}` inline with text (see example below)
-- **Inline math** (in lines) should be added with `$$ math $$` without any blank line before or after `$$`
-- **Inline math** (in lists) should be added with `\$$ math $$`
-
-```markdown
-<!-- Block math, keep all blank lines -->
-
-$$
-LaTeX_math_expression
-$$
-
-<!-- Equation numbering, keep all blank lines  -->
-
-$$
-\begin{equation}
-  LaTeX_math_expression
-  \label{eq:label_name}
-\end{equation}
-$$
-
-Can be referenced as \eqref{eq:label_name}.
-
-<!-- Inline math in lines, NO blank lines -->
-
-"Lorem ipsum dolor sit amet, $$ LaTeX_math_expression $$ consectetur adipiscing elit."
-
-<!-- Inline math in lists, escape the first `$` -->
-
-1. \$$ LaTeX_math_expression $$
-2. \$$ LaTeX_math_expression $$
-3. \$$ LaTeX_math_expression $$
-```
-
-> Starting with `v7.0.0`, configuration options for **MathJax** have been moved to file `assets/js/data/mathjax.js`{: .filepath }, and you can change the options as needed, such as adding [extensions][mathjax-exts].  
-> If you are building the site via `chirpy-starter`, copy that file from the gem installation directory (check with command `bundle info --path jekyll-theme-chirpy`) to the same directory in your repository.
-{: .prompt-tip }
-
-[mathjax-exts]: https://docs.mathjax.org/en/latest/input/tex/extensions/index.html
-
-## Mermaid
-
-[**Mermaid**](https://github.com/mermaid-js/mermaid) is a great diagram generation tool. To enable it on your post, add the following to the YAML block:
-
-```yaml
----
-mermaid: true
----
-```
-
-Then you can use it like other markdown languages: surround the graph code with ```` ```mermaid ```` and ```` ``` ````.
-
-## Learn More
-
-For more knowledge about Jekyll posts, visit the [Jekyll Docs: Posts](https://jekyllrb.com/docs/posts/).
+## 💬 Ready to Unlock the Full Potential of Your Data?
+
+Let's discuss your business goals and how advanced data collection and AI-powered solutions can provide transformative results. Contact me today for a personalized consultation and take your business to the forefront of data-driven innovation.
+
+<style>
+.project-showcase {
+  margin: 20px 0;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: rgba(0,0,0,0.03);
+}
+
+.project-header {
+  margin-bottom: 15px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 5px 10px;
+  margin-right: 8px;
+  border-radius: 20px;
+  background-color: #b23c3c;
+  color: white;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+
+.workflow-diagram {
+  margin: 25px 0;
+  padding: 15px;
+  background-color: rgba(0,0,0,0.03);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.workflow-step {
+  font-weight: bold;
+  color: #333;
+}
+
+.consulting-approach {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin: 30px 0;
+}
+
+.approach-step {
+  display: flex;
+  align-items: flex-start;
+  background-color: rgba(0,0,0,0.03);
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.approach-icon {
+  font-size: 1.5em;
+  margin-right: 15px;
+  color: #b23c3c;
+}
+
+.approach-content {
+  flex-grow: 1;
+}
+
+.approach-content h4 {
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.approach-content p {
+  margin: 0;
+}
+
+.output-example {
+  background-color: #f8f8f8;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin: 25px 0;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+}
+
+.output-header {
+  background-color: #b23c3c;
+  color: white;
+  padding: 15px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.output-title {
+  font-weight: bold;
+  font-size: 1.1em;
+  margin-bottom: 5px;
+}
+
+.output-meta {
+  font-size: 0.8em;
+  opacity: 0.9;
+}
+
+.output-content {
+  padding: 20px;
+  background-color: #fcfcfc;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.output-content p {
+  margin: 0;
+  line-height: 1.6;
+  color: #222;
+}
+
+.output-metrics {
+  display: flex;
+  justify-content: space-around;
+  padding: 15px;
+  background-color: #f5f5f5;
+  text-align: center;
+}
+
+.metric-value {
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #b23c3c;
+}
+
+.metric-label {
+  font-size: 0.8em;
+  color: #444;
+  margin-top: 5px;
+}
+</style>

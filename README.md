@@ -14,7 +14,7 @@
 
   [**Live Demo** →][demo]
 
-  [![Devices Mockup](https://chirpy-img.netlify.app/commons/devices-mockup.png)][demo]
+  ![Power BI Dashboard](assets/img/commons/dashboard.gif)
 
 </div>
 
