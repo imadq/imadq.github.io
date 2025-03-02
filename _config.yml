@@ -11,7 +11,7 @@ markdown: kramdown
 theme: minima
 
 # Social media profiles
-github_username:  imadq
+github_username: imadq
 linkedin_username: imad-qureshi-811854208
 
 # Exclude from processing
@@ -23,6 +23,17 @@ exclude:
   - .jekyll-cache/
   - gemfiles/
   - node_modules/
+  - jekyll-theme-chirpy.gemspec
+  - .travis.yml
+  - .scripts/
+  - docs/
+  - package.json
+  - dist/
+  - node_modules/
+  - "*.gemspec"
+  - tools/
+  - purgecss.js
+  - rollup.config.js
 
 # The Site Configuration
 
