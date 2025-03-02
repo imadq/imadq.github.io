@@ -8,7 +8,16 @@ order: 4
 
 # About Me
 
-Hello! I'm **Imad Qureshi**, a Data Scientist & Dashboard Consultant based in Bolingbrook, IL. My passion is turning raw data into powerful, actionable insights that help organizations make data-driven decisions.
+I'm Imad Qureshi, a Data Scientist and Dashboard Consultant specializing in data visualization and analytics solutions. I help businesses transform their data into actionable insights through custom dashboards and automated reporting solutions.
+
+## My Expertise
+
+- **Dashboard Development**: Creating interactive and insightful dashboards using tools like Power BI, Tableau, and custom web solutions.
+- **Business Process Automation**: Streamlining workflows and eliminating manual data tasks.
+- **Data Analysis**: Uncovering trends and patterns to drive better business decisions.
+- **Consulting Services**: Providing expert guidance on data strategy and implementation.
+
+Feel free to [contact me](mailto:Imadqureshi2@Gmail.com) to discuss how I can help with your data visualization and analytics needs.
 
 ## Background & Expertise
 - **Data Analytics**: Crafting interactive reports in Power BI, Tableau, and Google Analytics.  
