@@ -8,3 +8,27 @@
 ';
 
 /* append your custom style below */
+
+/* Make container width smaller for better layout */
+.container {
+  max-width: 1140px !important;
+}
+
+/* Adjust post card sizing */
+.card-wrapper {
+  max-width: 100% !important;
+  margin-bottom: 1.5rem !important;
+}
+
+/* Better card body padding */
+.card-body {
+  padding: 1.25rem !important;
+}
+
+/* Adjust main content area */
+@media (min-width: 1200px) {
+  .col-xl-8 {
+    max-width: 70% !important;
+    flex: 0 0 70% !important;
+  }
+}
