@@ -9,9 +9,15 @@
 
 /* append your custom style below */
 
-/* Make container width smaller for better layout */
+/* Make container width significantly smaller for better layout */
 .container {
-  max-width: 1140px !important;
+  max-width: 920px !important;
+}
+
+/* Restrict post container width */
+#post-list {
+  max-width: 750px !important;
+  margin: 0 auto !important;
 }
 
 /* Adjust post card sizing */
@@ -28,7 +34,12 @@
 /* Adjust main content area */
 @media (min-width: 1200px) {
   .col-xl-8 {
-    max-width: 70% !important;
-    flex: 0 0 70% !important;
+    max-width: 65% !important;
+    flex: 0 0 65% !important;
   }
+}
+
+/* Center content on the page */
+.main-content {
+  margin: 0 auto !important;
 }
