@@ -97,51 +97,54 @@ body {
 .card-wrapper .post-preview {
   width: 100% !important;
   display: flex !important;
-  flex-direction: row !important;
+  flex-direction: column !important;  /* Change to column for true Chirpy style */
   margin: 0 !important;
 }
 
-/* Force flex-direction to row at all screen sizes for post with images */
-.card-wrapper .post-preview.flex-md-row-reverse {
-  flex-direction: row-reverse !important;
-  display: flex !important;
-}
-
-/* Fix post images to match Chirpy theme */
+/* Fix post images to match Chirpy theme - FULL WIDTH BLOCK STYLE */
 .post img, 
 .page img {
   display: block !important;
   max-width: 100% !important;
   height: auto !important;
-  margin: 0.5rem auto !important;
+  margin: 1.5rem auto !important;
   border-radius: 0.25rem !important;
   float: none !important; /* Remove float */
   width: auto !important; /* Let image size naturally */
 }
 
-/* Handle dashboard image in post content */
+/* Handle dashboard image in post content - FULL WIDTH */
 .post-content img,
 .page-content img {
   display: block !important;
-  max-width: 90% !important;
+  max-width: 100% !important;
   height: auto !important;
   margin: 1.5rem auto !important;
   border-radius: 0.25rem !important;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
 }
 
-/* Fix the preview cards that have images */
+/* Fix for preview images if we want to keep them */
+.card-wrapper .post-preview .preview-img,
 .card-wrapper .post-preview .col-md-5 {
-  width: 30% !important;
-  flex: 0 0 30% !important;
-  max-width: 30% !important;
+  width: 100% !important;
+  flex: 0 0 100% !important;
+  max-width: 100% !important;
+  margin-bottom: 1rem !important;
   padding: 0 !important;
 }
 
-.card-wrapper .post-preview .col-md-7 {
-  width: 70% !important;
-  flex: 0 0 70% !important;
-  max-width: 70% !important;
+.card-wrapper .post-preview .col-md-7,
+.card-wrapper .post-preview .col-md-12 {
+  width: 100% !important;
+  flex: 0 0 100% !important;
+  max-width: 100% !important;
+  padding: 0 !important;
+}
+
+/* Force flex-direction to column at all screen sizes for true Chirpy style */
+.card-wrapper .post-preview.flex-md-row-reverse {
+  flex-direction: column !important;
+  display: flex !important;
 }
 
 /* Override the built-in row spacing */
@@ -149,16 +152,18 @@ body {
   width: 100% !important;
   margin: 0 !important;
   display: flex !important;
+  flex-direction: column !important;
 }
 
-/* Fix the GIF/image size */
+/* Fix the GIF/image size for previews */
 .card-wrapper .post-preview .preview-img {
   width: 100% !important;
-  height: 100% !important;
+  max-height: 250px !important;
   overflow: hidden !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
+  margin-bottom: 1rem !important;
 }
 
 .card-wrapper .post-preview .preview-img img {
@@ -227,21 +232,24 @@ body {
   }
 }
 
-/* Prevent media query breakpoints from stacking image and text */
+/* Force stacking at all screen sizes for true Chirpy style */
 @media (max-width: 768px) {
   .card-wrapper .post-preview.flex-md-row-reverse {
-    flex-direction: row-reverse !important;
+    flex-direction: column !important;
   }
   
-  .card-wrapper .post-preview .col-md-5 {
-    width: 30% !important;
-    flex: 0 0 30% !important;
-    max-width: 30% !important;
+  .card-wrapper .post-preview .col-md-5,
+  .card-wrapper .post-preview .preview-img {
+    width: 100% !important;
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    margin-bottom: 1rem !important;
   }
   
-  .card-wrapper .post-preview .col-md-7 {
-    width: 70% !important;
-    flex: 0 0 70% !important;
-    max-width: 70% !important;
+  .card-wrapper .post-preview .col-md-7,
+  .card-wrapper .post-preview .col-md-12 {
+    width: 100% !important;
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
   }
 }
