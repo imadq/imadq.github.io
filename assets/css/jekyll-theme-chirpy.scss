@@ -107,36 +107,41 @@ body {
   display: flex !important;
 }
 
-/* Fix individual post pages with images */
+/* Fix post images to match Chirpy theme */
 .post img, 
 .page img {
-  float: left !important;
-  width: 40% !important;
-  margin-right: 20px !important;
-  margin-bottom: 10px !important;
+  display: block !important;
+  max-width: 100% !important;
+  height: auto !important;
+  margin: 0.5rem auto !important;
+  border-radius: 0.25rem !important;
+  float: none !important; /* Remove float */
+  width: auto !important; /* Let image size naturally */
 }
 
-/* Special fix for dashboard page */
-body.dashboard img {
-  float: left !important;
-  width: 50% !important;
-  margin-right: 20px !important;
-  margin-bottom: 10px !important;
+/* Handle dashboard image in post content */
+.post-content img,
+.page-content img {
+  display: block !important;
+  max-width: 90% !important;
+  height: auto !important;
+  margin: 1.5rem auto !important;
+  border-radius: 0.25rem !important;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
 }
 
-body.dashboard .content {
-  display: flex !important;
-  flex-direction: row !important;
+/* Fix the preview cards that have images */
+.card-wrapper .post-preview .col-md-5 {
+  width: 30% !important;
+  flex: 0 0 30% !important;
+  max-width: 30% !important;
+  padding: 0 !important;
 }
 
-/* Fix dashboard layout as well */
-.dashboard-page .content img,
-#dashboard img,
-.post-content img:first-of-type {
-  float: left !important;
-  max-width: 50% !important;
-  margin-right: 20px !important;
-  margin-bottom: 10px !important;
+.card-wrapper .post-preview .col-md-7 {
+  width: 70% !important;
+  flex: 0 0 70% !important;
+  max-width: 70% !important;
 }
 
 /* Override the built-in row spacing */
@@ -144,25 +149,6 @@ body.dashboard .content {
   width: 100% !important;
   margin: 0 !important;
   display: flex !important;
-}
-
-/* Target both column types in post previews */
-.card-wrapper .post-preview .col-md-12,
-.card-wrapper .post-preview .col-md-7 {
-  width: 100% !important;
-  flex: 1 1 auto !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-
-/* Fix preview image container */
-.card-wrapper .post-preview .col-md-5 {
-  padding: 0 !important;
-  width: 30% !important;
-  flex: 0 0 30% !important;
-  max-width: 30% !important;
-  display: flex !important;
-  align-items: center !important;
 }
 
 /* Fix the GIF/image size */
@@ -179,18 +165,7 @@ body.dashboard .content {
   width: 100% !important;
   height: auto !important;
   object-fit: cover !important;
-}
-
-/* Fix post page image layouts */
-.post-content {
-  overflow: auto !important;
-}
-
-.post-content > p:first-of-type img {
-  float: left !important;
-  max-width: 50% !important;
-  margin-right: 20px !important;
-  margin-bottom: 10px !important;
+  border-radius: 0.25rem !important;
 }
 
 /* Make card content fill available space */
@@ -268,16 +243,5 @@ body.dashboard .content {
     width: 70% !important;
     flex: 0 0 70% !important;
     max-width: 70% !important;
-  }
-  
-  /* Keep images floating left on small screens */
-  .post img, 
-  .page img,
-  .post-content > p:first-of-type img,
-  body.dashboard img {
-    float: left !important;
-    width: 40% !important;
-    margin-right: 20px !important;
-    margin-bottom: 10px !important;
   }
 }
