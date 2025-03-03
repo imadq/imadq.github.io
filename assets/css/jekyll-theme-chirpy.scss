@@ -107,6 +107,38 @@ body {
   display: flex !important;
 }
 
+/* Fix individual post pages with images */
+.post img, 
+.page img {
+  float: left !important;
+  width: 40% !important;
+  margin-right: 20px !important;
+  margin-bottom: 10px !important;
+}
+
+/* Special fix for dashboard page */
+body.dashboard img {
+  float: left !important;
+  width: 50% !important;
+  margin-right: 20px !important;
+  margin-bottom: 10px !important;
+}
+
+body.dashboard .content {
+  display: flex !important;
+  flex-direction: row !important;
+}
+
+/* Fix dashboard layout as well */
+.dashboard-page .content img,
+#dashboard img,
+.post-content img:first-of-type {
+  float: left !important;
+  max-width: 50% !important;
+  margin-right: 20px !important;
+  margin-bottom: 10px !important;
+}
+
 /* Override the built-in row spacing */
 .row.g-0 {
   width: 100% !important;
@@ -147,6 +179,18 @@ body {
   width: 100% !important;
   height: auto !important;
   object-fit: cover !important;
+}
+
+/* Fix post page image layouts */
+.post-content {
+  overflow: auto !important;
+}
+
+.post-content > p:first-of-type img {
+  float: left !important;
+  max-width: 50% !important;
+  margin-right: 20px !important;
+  margin-bottom: 10px !important;
 }
 
 /* Make card content fill available space */
@@ -224,5 +268,16 @@ body {
     width: 70% !important;
     flex: 0 0 70% !important;
     max-width: 70% !important;
+  }
+  
+  /* Keep images floating left on small screens */
+  .post img, 
+  .page img,
+  .post-content > p:first-of-type img,
+  body.dashboard img {
+    float: left !important;
+    width: 40% !important;
+    margin-right: 20px !important;
+    margin-bottom: 10px !important;
   }
 }
