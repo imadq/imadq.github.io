@@ -31,11 +31,37 @@
   padding: 1.25rem !important;
 }
 
+/* Ensure post previews expand properly */
+.card-wrapper .post-preview {
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: row !important;
+}
+
+.card-wrapper .post-preview .col-md-12 {
+  width: 100% !important;
+  flex: 1 1 auto !important;
+}
+
+/* Make card content fill available space */
+.card-text {
+  width: 100% !important;
+}
+
+.card-title {
+  width: 100% !important;
+}
+
 /* Adjust main content area */
 @media (min-width: 1200px) {
   .col-xl-8 {
     max-width: 65% !important;
     flex: 0 0 65% !important;
+  }
+  
+  /* Ensure posts expand in full screen */
+  .card-wrapper .post-preview {
+    width: 100% !important;
   }
 }
 
