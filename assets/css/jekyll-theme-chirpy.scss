@@ -101,10 +101,17 @@ body {
   margin: 0 !important;
 }
 
+/* Force flex-direction to row at all screen sizes for post with images */
+.card-wrapper .post-preview.flex-md-row-reverse {
+  flex-direction: row-reverse !important;
+  display: flex !important;
+}
+
 /* Override the built-in row spacing */
 .row.g-0 {
   width: 100% !important;
   margin: 0 !important;
+  display: flex !important;
 }
 
 /* Target both column types in post previews */
@@ -119,6 +126,27 @@ body {
 /* Fix preview image container */
 .card-wrapper .post-preview .col-md-5 {
   padding: 0 !important;
+  width: 30% !important;
+  flex: 0 0 30% !important;
+  max-width: 30% !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* Fix the GIF/image size */
+.card-wrapper .post-preview .preview-img {
+  width: 100% !important;
+  height: 100% !important;
+  overflow: hidden !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.card-wrapper .post-preview .preview-img img {
+  width: 100% !important;
+  height: auto !important;
+  object-fit: cover !important;
 }
 
 /* Make card content fill available space */
@@ -177,5 +205,24 @@ body {
   .container.px-xxl-5 {
     padding-left: 15px !important;
     padding-right: 15px !important;
+  }
+}
+
+/* Prevent media query breakpoints from stacking image and text */
+@media (max-width: 768px) {
+  .card-wrapper .post-preview.flex-md-row-reverse {
+    flex-direction: row-reverse !important;
+  }
+  
+  .card-wrapper .post-preview .col-md-5 {
+    width: 30% !important;
+    flex: 0 0 30% !important;
+    max-width: 30% !important;
+  }
+  
+  .card-wrapper .post-preview .col-md-7 {
+    width: 70% !important;
+    flex: 0 0 70% !important;
+    max-width: 70% !important;
   }
 }
