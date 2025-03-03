@@ -9,11 +9,20 @@
 
 /* append your custom style below */
 
-/* Make container width significantly smaller for better layout */
+/* Fix overall container and layout */
 .container {
-  max-width: 920px !important;
+  max-width: 1200px !important;
   padding-left: 15px !important;
   padding-right: 15px !important;
+}
+
+/* Target the main layout columns */
+.col-12.col-lg-11.col-xl-9 {
+  width: 75% !important;
+  max-width: 75% !important;
+  flex: 0 0 75% !important;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
 }
 
 /* Fix alignment of all content */
@@ -26,15 +35,19 @@ body {
   margin-right: 0 !important;
 }
 
-/* Restrict post container width */
+/* Adjust post container width */
 #post-list {
-  max-width: 700px !important;
+  max-width: 100% !important;
+  width: 100% !important;
   margin: 0 auto !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
 /* Adjust post card sizing */
 .card-wrapper {
   max-width: 100% !important;
+  width: 100% !important;
   margin-bottom: 1.5rem !important;
   margin-left: 0 !important;
   margin-right: 0 !important;
@@ -54,7 +67,8 @@ body {
   margin: 0 !important;
 }
 
-.card-wrapper .post-preview .col-md-12 {
+.card-wrapper .post-preview .col-md-12,
+.card-wrapper .post-preview .col-md-7 {
   width: 100% !important;
   flex: 1 1 auto !important;
   padding-left: 0 !important;
@@ -72,9 +86,10 @@ body {
 
 /* Center all content properly */
 .main-content {
-  margin: 0 auto !important;
+  margin: 0 !important;
   padding-left: 0 !important;
   padding-right: 0 !important;
+  width: 100% !important;
 }
 
 /* Ensure right sidebar spacing is consistent */
@@ -82,31 +97,30 @@ body {
   padding-left: 15px !important;
 }
 
-/* Fix Page and Skills sections alignment */
-.main-content > .pages,
-.main-content > .skills,
-.main-content > h1:first-of-type,
-.main-content > h2:first-of-type,
-.main-content > .access,
-.main-content > section {
-  padding-left: 15px !important;
-  padding-right: 15px !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  width: 700px !important;
-  max-width: 100% !important;
+/* Ensure footer aligns with content */
+#tail-wrapper {
+  width: 75% !important;
+  max-width: 75% !important;
+  flex: 0 0 75% !important;
 }
 
-/* Adjust main content area */
+/* Adjust main content for larger screens */
 @media (min-width: 1200px) {
-  .col-xl-8 {
-    max-width: 65% !important;
-    flex: 0 0 65% !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+  /* Increase main content width */
+  .col-12.col-lg-11.col-xl-9 {
+    width: 75% !important;
+    max-width: 75% !important;
+    flex: 0 0 75% !important;
   }
   
-  /* Ensure posts expand in full screen with proper alignment */
+  /* Panel adjustments */
+  #panel-wrapper.col-xl-3 {
+    width: 25% !important;
+    max-width: 25% !important;
+    flex: 0 0 25% !important;
+  }
+
+  /* Ensure posts expand in full screen */
   .card-wrapper .post-preview {
     width: 100% !important;
     margin: 0 !important;
