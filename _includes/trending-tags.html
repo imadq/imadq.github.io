@@ -39,7 +39,38 @@
     <div class="d-flex flex-wrap mt-3 mb-1 me-3">
       {% for tag_name in trending_tags %}
         {% assign tag_slug = tag_name | strip | replace: ' ', '-' | downcase %}
-        {% assign url = tag_slug | url_encode | prepend: '/tags/' | append: '/' %}
+        
+        {% comment %} Custom tag URL mapping {% endcomment %}
+        {% assign custom_url = nil %}
+        {% case tag_name %}
+          {% when 'Automation' %}
+            {% assign custom_url = '/posts/business-process-automation/' %}
+          {% when 'About' %}
+            {% assign custom_url = '/posts/about-me/' %}
+          {% when 'AI' %}
+            {% assign custom_url = '/posts/advanced-ai-and-data-intelligence-solutions/' %}
+          {% when 'Business Intelligence' %}
+            {% assign custom_url = '/posts/data-dashboard-services/' %}
+          {% when 'Chatbots' %}
+            {% assign custom_url = '/posts/advanced-ai-and-data-intelligence-solutions/' %}
+          {% when 'Dashboard' %}
+            {% assign custom_url = '/posts/data-dashboard-services/' %}
+          {% when 'Data Science' %}
+            {% assign custom_url = '/posts/advanced-ai-and-data-intelligence-solutions/' %}
+          {% when 'Data Visualization' %}
+            {% assign custom_url = '/posts/data-dashboard-services/' %}
+          {% when 'Data-Extraction' %}
+            {% assign custom_url = '/posts/advanced-ai-and-data-intelligence-solutions/' %}
+          {% when 'Excel' %}
+            {% assign custom_url = '/posts/business-process-automation/' %}
+        {% endcase %}
+        
+        {% if custom_url %}
+          {% assign url = custom_url %}
+        {% else %}
+          {% assign url = tag_slug | url_encode | prepend: '/tags/' | append: '/' %}
+        {% endif %}
+        
         <a class="post-tag btn btn-outline-primary" href="{{ url | relative_url }}">{{ tag_name }}</a>
       {% endfor %}
     </div>
