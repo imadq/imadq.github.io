@@ -49,6 +49,8 @@ You can view or download my resume to learn more about my professional experienc
 
 ## Let's Connect
 - **[LinkedIn](https://www.linkedin.com/in/imad-qureshi-811854208/)**
+- **[Upwork](https://www.upwork.com/freelancers/~013ce322fad7038911)**
+- **[Fiverr](https://www.fiverr.com/s/P2XEExg)**
 - **[Email](mailto:imadqureshi2@gmail.com)**
 
 If you need data-driven insights, automated solutions, or expert guidance on managing and visualizing your data, feel free to reach out. I look forward to collaborating with you!
