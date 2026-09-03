@@ -241,6 +241,12 @@ table.board td.tools{font-family:var(--mono);font-size:12.5px}
 .principle .mono{color:var(--bg);opacity:.7}
 .principle p{font-family:var(--display);font-size:clamp(20px,2.2vw,26px);font-weight:600;letter-spacing:-0.01em;line-height:1.25}
 
+/* about */
+.about{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px;align-items:start;padding:56px 0 72px;border-top:1px solid var(--line)}
+.about h2{font-size:clamp(34px,4.2vw,56px);font-weight:700;line-height:1.02;margin-top:14px}
+.about-text{display:flex;flex-direction:column;gap:18px;font-size:18px;color:var(--ink-2);max-width:62ch}
+.about-text p:first-child{color:var(--ink);font-size:20px}
+
 /* experience */
 .timeline{display:flex;flex-direction:column}
 .job{display:grid;grid-template-columns:200px 1fr;gap:32px;padding:32px 0;border-top:1px solid var(--line)}
@@ -287,6 +293,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   .hero .wrap{grid-template-columns:1fr;gap:40px}
   .jobs{justify-self:start;width:100%}
   .sec-head{grid-template-columns:1fr;gap:16px}
+  .about{grid-template-columns:1fr;gap:24px}
   .card.featured{grid-template-columns:1fr}
   .tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
   .panels{grid-template-columns:1fr}
@@ -328,6 +335,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <a href="#work">Work</a>
       <a href="#dashboard">Dashboard</a>
       <a href="#automation">Automation</a>
+      <a href="#about">About</a>
       <a href="#experience">Experience</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -425,17 +433,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       </article>
 
       <article class="card rv">
-        <div class="tags"><span class="tag">Warehouse</span><span class="tag">SQL</span><span class="tag neutral">Work</span></div>
-        <h3>An analytics process for an entire company</h3>
-        <p>One cloud warehouse as the source of truth, KPI definitions agreed with the teams that own the numbers, and scheduled and on-demand reporting pipelines on top, with the outputs landing in shared drives and inboxes automatically.</p>
-        <ul>
-          <li>A scalable foundation shared across departments</li>
-          <li>Query performance and storage tuned for large datasets</li>
-        </ul>
-        <div class="foot"><span class="mono">BigQuery · SQL · Python · Power BI · Tableau</span></div>
-      </article>
-
-      <article class="card rv">
         <div class="tags"><span class="tag">Forecasting</span><span class="tag">Python</span><span class="tag neutral">Work</span></div>
         <h3>Revenue forecasting that gets scored every cycle</h3>
         <p>Recurring revenue forecasts built from sales history, seasonality and planned promotions, scored against actuals each cycle and presented to decision-makers with the risks called out.</p>
@@ -445,6 +442,17 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
           <li>Delivered on a schedule, by email and to the shared drive</li>
         </ul>
         <div class="foot"><span class="mono">Python · SQL · Power BI · Email automation</span></div>
+      </article>
+
+      <article class="card rv">
+        <div class="tags"><span class="tag">Finance</span><span class="tag">Pricing</span><span class="tag">Experiments</span><span class="tag neutral">Work</span></div>
+        <h3>Finance support: price sensitivity and A/B testing</h3>
+        <p>Worked alongside finance on pricing questions: how demand moved when prices did, which promotions paid for themselves, and what an A/B test on the site or a campaign actually proved. Clean test design and honest readouts, including the ones that said no difference.</p>
+        <ul>
+          <li>Price sensitivity estimated from history and tests, by product line</li>
+          <li>A/B tests sized before launch and read with confidence intervals, not gut feel</li>
+        </ul>
+        <div class="foot"><span class="mono">Python · SQL · Statistics · Excel · Power BI</span></div>
       </article>
 
       <article class="card featured rv">
@@ -471,14 +479,14 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       </article>
 
       <article class="card rv">
-        <div class="tags"><span class="tag">AI</span><span class="tag">Vision model</span><span class="tag neutral">Personal</span></div>
-        <h3>AI listing generator for apparel resale</h3>
-        <p>A local vision-language model (Qwen3-VL via Ollama) reads product photos and drafts titles, attributes and descriptions for marketplace listings. A rules-based QA gate holds anything that fails checks, so nothing goes live unreviewed.</p>
+        <div class="tags"><span class="tag">Market analysis</span><span class="tag">GIS</span><span class="tag">Public data</span><span class="tag neutral">Work</span></div>
+        <h3>Market analysis with government data and customer mapping</h3>
+        <p>Public datasets on demographics, income and population, combined with our own customer records, to map where customers are and where the next ones are likely to be. Used to pick campaign locations and size markets, presented as maps rather than tables so the answer was obvious in the room.</p>
         <ul>
-          <li>Runs on my own hardware at zero API cost</li>
-          <li>Structured output validated before it reaches the listing template</li>
+          <li>Customer geocoding and density maps laid over demographic layers</li>
+          <li>Public data refreshed as new releases land, so the map stays current</li>
         </ul>
-        <div class="foot"><span class="mono">Python · Ollama · Qwen3-VL · SQLite</span></div>
+        <div class="foot"><span class="mono">Python · GIS mapping · Census and public data · Power BI</span></div>
       </article>
 
       <article class="card rv">
@@ -625,7 +633,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
             <tr><td>Revenue forecast</td><td class="trig">Each cycle</td><td class="tools">Python · pandas</td><td>Forecast table, accuracy log, dashboard refresh</td></tr>
             <tr><td>Email reports</td><td class="trig">After refresh</td><td class="tools">Python · Outlook / SMTP</td><td>PDF and Excel reports in the right inboxes, exceptions first</td></tr>
             <tr><td>Shared drive sync</td><td class="trig">After refresh</td><td class="tools">Python · SharePoint / Google Drive</td><td>Latest exports in the team folders, previous versions kept</td></tr>
-            <tr><td>Listing generator</td><td class="trig">On new photos</td><td class="tools">Ollama · Qwen3-VL · QA gate</td><td>Draft listings held for review</td></tr>
             <tr><td>Review analysis</td><td class="trig">Scheduled</td><td class="tools">Review APIs · LLM tagger</td><td>Themes and sentiment by product, joined to sales, weekly email</td></tr>
             <tr><td>Competitor web scraping</td><td class="trig">Scheduled</td><td class="tools">Python · scrapers</td><td>Competitor prices and assortment tracked over time, alerts on moves</td></tr>
             <tr><td>Invoice intake</td><td class="trig">Mailbox poll</td><td class="tools">IMAP · OCR · LLM</td><td>Posted invoices, filed PDFs, overdue reminders</td></tr>
@@ -642,11 +649,30 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   </div>
 </section>
 
+<section class="block" id="about" style="padding-top:0">
+  <div class="wrap">
+    <div class="about rv">
+      <div>
+        <div class="mono">04 — About me</div>
+        <h2>Hi, I'm Imad.</h2>
+        <div class="chips" style="margin-top:22px">
+          <span class="chip">Born and raised in Illinois</span><span class="chip">UIC · Information &amp; Decision Sciences</span><span class="chip">First analytics hire, twice</span>
+        </div>
+      </div>
+      <div class="about-text">
+        <p>I was born and raised in Illinois and graduated from the University of Illinois at Chicago with a degree in Information and Decision Sciences, focused on data analytics.</p>
+        <p>What I care about is business technology: the point where clean data and a bit of automation make a company run better. At both companies I've worked for I was the first analytics hire, which meant working with whatever was already there. So I built the processes myself: Power BI and the reporting around it, the database queries underneath, and the habits that keep the numbers trustworthy.</p>
+        <p>I have fun learning new tools, AI included, and most of what I know I picked up by building something with it. I make a point of staying current. If there's a better way to do something, I'd rather find it than keep doing the old one.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="block" id="experience" style="padding-top:0">
   <div class="wrap">
     <div class="sec-head rv">
       <div>
-        <div class="mono">04 — Experience</div>
+        <div class="mono">05 — Experience</div>
         <h2>Two industries, one habit: build the reporting first.</h2>
       </div>
     </div>
@@ -724,7 +750,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <div class="wrap">
     <div class="sec-head rv" style="margin-bottom:36px">
       <div>
-        <div class="mono">05 — Toolkit</div>
+        <div class="mono">06 — Toolkit</div>
         <h2>What I reach for.</h2>
       </div>
     </div>
@@ -743,7 +769,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <div class="wrap">
     <div class="contact rv">
       <div>
-        <div class="mono">06 — Contact</div>
+        <div class="mono">07 — Contact</div>
         <h2>Have a data problem? Let's talk.</h2>
         <p class="lead">Full-time roles, contract work, and dashboard or automation projects. Based in the Chicago area.</p>
         <a class="email" href="mailto:imadqureshi2@gmail.com"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>imadqureshi2@gmail.com</a>
