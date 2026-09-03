@@ -1,0 +1,693 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Imad Qureshi — Data Scientist</title>
+<meta name="description" content="Imad Qureshi is a data scientist in the Chicago area building BigQuery warehouses, marketplace API integrations, revenue forecasts and Power BI reporting for e-commerce.">
+<meta property="og:title" content="Imad Qureshi — Data Scientist">
+<meta property="og:description" content="BigQuery pipelines, Amazon / Walmart / Salesforce API integrations, forecasting, Power BI, and AI automation.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://imadq.github.io/">
+<meta property="og:image" content="https://imadq.github.io/assets/avatar.jpg">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f4ee;--surface:#fffdf8;--surface-2:#efece4;
+  --ink:#15140f;--ink-2:#4b4942;--muted:#86837b;--line:#e2dfd5;--line-2:#d0ccbf;
+  --accent:#0f8f66;--accent-ink:#0a6b4c;--accent-soft:#e0f2ea;--accent-line:#b9e0cf;
+  --d-bg:#14161b;--d-card:#1d2027;--d-card-2:#232730;--d-ink:#f1f0eb;--d-ink-2:#b3b7c0;--d-muted:#7c8190;--d-line:#2c3039;--d-line-2:#363b46;
+  --s1:#17a672;--s2:#d9722f;--s3:#5b84ea;--good:#2fbf83;
+  --display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --body:"Instrument Sans","Segoe UI",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,"Cascadia Mono",Consolas,monospace;
+  --r:18px;--r-s:10px;--wrap:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;text-wrap:pretty}
+a{color:var(--accent-ink);text-decoration:none}
+a:hover{color:var(--accent)}
+img{max-width:100%;display:block}
+h1,h2,h3,h4{font-family:var(--display);margin:0;letter-spacing:-0.02em;text-wrap:balance}
+p{margin:0}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 28px}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.btn{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 20px;border-radius:999px;font-weight:600;font-size:15px;border:1px solid var(--line-2);color:var(--ink);background:var(--surface);transition:transform .18s ease,background .18s ease,border-color .18s ease}
+.btn:hover{transform:translateY(-1px);border-color:var(--ink);color:var(--ink)}
+.btn.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn.primary:hover{background:var(--accent-ink);border-color:var(--accent-ink);color:#fff}
+.btn svg{width:18px;height:18px}
+.icon{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);background:rgba(246,244,238,.82);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px;gap:24px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:18px;color:var(--ink);letter-spacing:-0.01em}
+.brand i{width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.links{display:flex;align-items:center;gap:26px;font-size:15px;font-weight:500}
+.links a{color:var(--ink-2)}
+.links a:hover{color:var(--ink)}
+.nav .btn{height:40px;padding:0 16px;font-size:14px}
+.menu-btn{display:none;width:44px;height:44px;border:1px solid var(--line-2);border-radius:12px;background:var(--surface);align-items:center;justify-content:center;color:var(--ink)}
+
+/* hero */
+.hero{padding:88px 0 56px}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:56px;align-items:center}
+.hero h1{font-size:clamp(44px,6.2vw,86px);font-weight:800;line-height:.98;letter-spacing:-0.035em;margin:18px 0 26px}
+.hero h1 em{font-style:normal;color:var(--accent);position:relative}
+.hero .lead{font-size:19px;color:var(--ink-2);max-width:56ch}
+.hero .lead strong{color:var(--ink);font-weight:600}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.social{display:flex;flex-wrap:wrap;gap:22px;margin-top:26px;font-size:15px;font-weight:500}
+.social a{display:inline-flex;align-items:center;gap:8px;color:var(--ink-2)}
+.social a:hover{color:var(--ink)}
+.portrait{display:flex;flex-direction:column;gap:22px;align-items:flex-start;justify-self:end;width:min(100%,340px)}
+.portrait img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:28px;border:1px solid var(--line);box-shadow:0 30px 60px -30px rgba(21,20,15,.35)}
+.facts{display:flex;flex-direction:column;gap:12px;width:100%}
+.fact{display:grid;grid-template-columns:96px 1fr;gap:14px;padding:12px 0;border-top:1px solid var(--line);font-size:15px}
+.fact:last-child{border-bottom:1px solid var(--line)}
+.fact .mono{padding-top:3px}
+
+/* stack strip */
+.stack{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--surface)}
+.stack .wrap{display:flex;align-items:center;gap:28px;padding-top:18px;padding-bottom:18px;flex-wrap:wrap}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;height:32px;padding:0 12px;border-radius:999px;border:1px solid var(--line-2);font-family:var(--mono);font-size:12.5px;color:var(--ink-2);background:var(--bg)}
+
+/* sections */
+section.block{padding:104px 0}
+.sec-head{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:40px;align-items:end;margin-bottom:52px}
+.sec-head h2{font-size:clamp(34px,4.2vw,56px);font-weight:700;line-height:1.02;margin-top:14px}
+.sec-head .lead{color:var(--ink-2);font-size:17px;padding-bottom:6px}
+.dark .sec-head .lead{color:var(--d-ink-2)}
+
+/* project cards */
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:30px;display:flex;flex-direction:column;gap:16px;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.card:hover{transform:translateY(-3px);box-shadow:0 24px 50px -30px rgba(21,20,15,.35);border-color:var(--line-2)}
+.card.featured{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:40px;align-items:center}
+.card .tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--accent-ink);background:var(--accent-soft);border:1px solid var(--accent-line);padding:4px 9px;border-radius:6px}
+.tag.neutral{color:var(--ink-2);background:var(--surface-2);border-color:var(--line)}
+.card h3{font-size:25px;font-weight:600;line-height:1.15}
+.card p{color:var(--ink-2)}
+.card ul{margin:2px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px;color:var(--ink-2);font-size:15.5px}
+.card li{display:flex;gap:12px}
+.card li::before{content:"";flex:0 0 6px;height:6px;border-radius:50%;background:var(--accent);margin-top:11px}
+.card .foot{margin-top:auto;padding-top:14px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.card .foot .mono{text-transform:none;letter-spacing:0;font-size:12.5px}
+.card .body{display:flex;flex-direction:column;gap:16px;min-width:0}
+.placeholder{font-family:var(--mono);font-size:12px;color:#9a5b12;background:#fdf0dc;border:1px dashed #e4b56f;padding:3px 8px;border-radius:6px}
+.shot{border-radius:12px;border:1px solid var(--line);overflow:hidden;background:#111}
+.shot img{width:100%;height:auto}
+
+/* pipeline diagram */
+.pipe{display:flex;flex-direction:column;gap:10px;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:18px}
+.pipe .row{display:flex;gap:8px}
+.pipe .node{flex:1;background:var(--surface);border:1px solid var(--line-2);border-radius:10px;padding:10px 12px;font-family:var(--mono);font-size:12px;line-height:1.35;color:var(--ink)}
+.pipe .node small{display:block;color:var(--muted);font-size:11px;margin-top:3px}
+.pipe .node.acc{border-color:var(--accent-line);background:var(--accent-soft);color:var(--accent-ink)}
+.pipe .node.acc small{color:var(--accent-ink);opacity:.8}
+.pipe .arrow{display:flex;justify-content:center;color:var(--muted)}
+.pipe .arrow svg{width:16px;height:16px}
+
+/* dashboards (dark band) */
+.dark{background:var(--d-bg);color:var(--d-ink)}
+.dark .mono{color:var(--d-muted)}
+.dark h2,.dark h3{color:var(--d-ink)}
+.report{background:var(--d-card);border:1px solid var(--d-line);border-radius:var(--r);padding:22px;box-shadow:0 40px 80px -40px rgba(0,0,0,.8)}
+.report-top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding-bottom:18px;border-bottom:1px solid var(--d-line);margin-bottom:18px}
+.report-title{display:flex;align-items:center;gap:12px;font-family:var(--body);font-weight:600;font-size:16px}
+.report-title .dot{width:8px;height:8px;border-radius:50%;background:var(--s1)}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.filter{display:inline-flex;align-items:center;gap:8px;height:34px;padding:0 12px;border-radius:8px;border:1px solid var(--d-line-2);background:var(--d-card-2);color:var(--d-ink-2);font-size:13px}
+.filter b{color:var(--d-ink);font-weight:500}
+.filter svg{width:14px;height:14px;stroke:var(--d-muted)}
+.sample{font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--d-muted);border:1px dashed var(--d-line-2);padding:4px 8px;border-radius:6px}
+.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:12px}
+.tile{background:var(--d-card-2);border:1px solid var(--d-line);border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;gap:6px}
+.tile .label{font-size:13px;color:var(--d-ink-2)}
+.tile .value{font-size:30px;font-weight:600;letter-spacing:-0.02em;line-height:1.1;color:var(--d-ink)}
+.tile .delta{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--d-muted)}
+.tile .delta b{color:var(--good);font-weight:600;display:inline-flex;align-items:center;gap:3px}
+.tile .delta svg{width:12px;height:12px;stroke:var(--good);fill:none;stroke-width:2}
+.panels{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:12px}
+.panel{background:var(--d-card-2);border:1px solid var(--d-line);border-radius:12px;padding:16px 18px 12px;min-width:0;position:relative}
+.panel-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:8px;flex-wrap:wrap}
+.panel h4{font-family:var(--body);font-size:14px;font-weight:600;color:var(--d-ink);letter-spacing:0}
+.legend{display:flex;gap:16px;font-size:12px;color:var(--d-ink-2)}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.legend i{width:16px;height:2px;border-radius:2px;display:inline-block}
+.scroll-x{overflow-x:auto;overflow-y:hidden}
+.chart{width:100%;height:auto;display:block;overflow:visible}
+@media (max-width:700px){#line{min-width:600px}}
+.chart text{font-family:var(--mono);font-size:10.5px;fill:var(--d-muted)}
+.chart .lbl{fill:var(--d-ink-2)}
+.chart .grid{stroke:var(--d-line);stroke-width:1}
+.chart .axis{stroke:var(--d-line-2);stroke-width:1}
+.chart .xhair{stroke:var(--d-ink-2);stroke-width:1;opacity:0;pointer-events:none}
+.chart .hit{fill:transparent;cursor:crosshair}
+.chart .bar{transition:opacity .15s}
+.chart .bar:hover{opacity:.85}
+.tip{position:absolute;pointer-events:none;background:#0d0f13;border:1px solid var(--d-line-2);border-radius:8px;padding:8px 10px;font-size:12px;color:var(--d-ink-2);box-shadow:0 10px 30px rgba(0,0,0,.5);opacity:0;transform:translate(-50%,-110%);white-space:nowrap;z-index:5;transition:opacity .12s}
+.tip b{color:var(--d-ink);font-weight:600;font-size:13px}
+.tip .row{display:flex;align-items:center;gap:8px;justify-content:space-between}
+.tip i{width:12px;height:2px;display:inline-block;border-radius:2px}
+.table-panel{grid-column:1/-1}
+table.rt{width:100%;border-collapse:collapse;font-size:13px}
+table.rt th{font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--d-muted);text-align:right;padding:6px 10px;border-bottom:1px solid var(--d-line-2)}
+table.rt th:first-child,table.rt td:first-child{text-align:left}
+table.rt td{padding:9px 10px;text-align:right;border-bottom:1px solid var(--d-line);font-variant-numeric:tabular-nums;color:var(--d-ink)}
+table.rt tr:last-child td{border-bottom:0}
+table.rt td.ch{display:flex;align-items:center;gap:9px;color:var(--d-ink)}
+table.rt td.ch i{width:8px;height:8px;border-radius:2px;background:var(--s1);display:inline-block}
+table.rt .up{color:var(--good)}
+table.rt .dn{color:#e07070}
+.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-top:64px}
+.gal{display:flex;flex-direction:column;gap:12px}
+.gal .shot{border-color:var(--d-line-2)}
+.gal figcaption{font-size:14px;color:var(--d-ink-2)}
+.gal figcaption b{color:var(--d-ink);font-weight:600;display:block}
+figure{margin:0}
+.pbi-list{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;margin-top:64px;padding-top:40px;border-top:1px solid var(--d-line)}
+.pbi-list div{display:flex;flex-direction:column;gap:8px;font-size:15px;color:var(--d-ink-2)}
+.pbi-list b{color:var(--d-ink);font-weight:600;font-size:16px}
+.pbi-list svg{width:22px;height:22px;stroke:var(--s1);fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+
+/* AI section */
+.three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.ai{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:28px;display:flex;flex-direction:column;gap:14px}
+.ai .ic{width:44px;height:44px;border-radius:12px;background:var(--accent-soft);border:1px solid var(--accent-line);display:flex;align-items:center;justify-content:center}
+.ai .ic svg{width:22px;height:22px;stroke:var(--accent-ink);fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.ai h3{font-size:22px;font-weight:600}
+.ai p{color:var(--ink-2);font-size:15.5px}
+.ai .how{margin-top:auto;padding-top:14px;border-top:1px solid var(--line);font-family:var(--mono);font-size:12.5px;color:var(--muted);line-height:1.5}
+.principle{margin-top:22px;background:var(--ink);color:var(--bg);border-radius:var(--r);padding:28px 32px;display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center}
+.principle .mono{color:#a8a59b}
+.principle p{font-family:var(--display);font-size:clamp(20px,2.2vw,26px);font-weight:600;letter-spacing:-0.01em;line-height:1.25}
+
+/* experience */
+.timeline{display:flex;flex-direction:column}
+.job{display:grid;grid-template-columns:200px 1fr;gap:32px;padding:32px 0;border-top:1px solid var(--line)}
+.job:last-child{border-bottom:1px solid var(--line)}
+.job .when{font-family:var(--mono);font-size:13px;color:var(--muted);line-height:1.5;padding-top:6px}
+.job .when b{display:block;color:var(--ink);font-weight:500}
+.job h3{font-size:24px;font-weight:600}
+.job .co{color:var(--ink-2);margin-top:4px;font-size:16px}
+.job ul{margin:14px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px;color:var(--ink-2);font-size:15.5px;max-width:70ch}
+.job li{display:flex;gap:12px}
+.job li::before{content:"";flex:0 0 6px;height:6px;border-radius:50%;background:var(--accent);margin-top:11px}
+.edu{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-top:22px}
+.edu .card h3{font-size:20px}
+.edu .card p{font-size:15.5px}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.skill{display:flex;flex-direction:column;gap:12px}
+.skill h3{font-size:17px;font-weight:600;font-family:var(--body);letter-spacing:0}
+.skill .chips .chip{background:var(--surface)}
+
+/* contact */
+.contact{background:var(--surface);border:1px solid var(--line);border-radius:28px;padding:64px;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:40px;align-items:center}
+.contact h2{font-size:clamp(34px,4.2vw,54px);font-weight:700;line-height:1.02;margin-top:14px}
+.contact .lead{color:var(--ink-2);margin-top:18px;max-width:48ch}
+.contact .email{font-family:var(--display);font-weight:600;font-size:clamp(20px,2.4vw,28px);letter-spacing:-0.01em;color:var(--ink);display:inline-flex;align-items:center;gap:12px;margin-top:26px}
+.contact .email:hover{color:var(--accent)}
+.contact .email svg{width:26px;height:26px}
+.contact .list{display:flex;flex-direction:column;gap:0}
+.contact .list a{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-top:1px solid var(--line);color:var(--ink);font-weight:500;font-size:16px}
+.contact .list a:last-child{border-bottom:1px solid var(--line)}
+.contact .list a span{color:var(--muted);font-family:var(--mono);font-size:12px}
+.contact .list a:hover{color:var(--accent)}
+footer{padding:36px 0 48px;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+/* responsive */
+@media (max-width:1000px){
+  .hero .wrap{grid-template-columns:1fr;gap:40px}
+  .portrait{justify-self:start;width:min(100%,360px)}
+  .sec-head{grid-template-columns:1fr;gap:16px}
+  .card.featured{grid-template-columns:1fr}
+  .tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .panels{grid-template-columns:1fr}
+  .pbi-list{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .three{grid-template-columns:1fr}
+  .skills{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .contact{grid-template-columns:1fr;padding:44px}
+  .job{grid-template-columns:1fr;gap:10px;padding:26px 0}
+}
+@media (max-width:700px){
+  body{font-size:16px}
+  .wrap{padding:0 20px}
+  .links{display:none;position:absolute;top:66px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start;padding:16px 20px 20px;gap:16px}
+  .links.open{display:flex}
+  .menu-btn{display:inline-flex}
+  .nav .btn{display:none}
+  .hero{padding:56px 0 44px}
+  .hero h1{font-size:clamp(40px,12vw,56px)}
+  .hero .lead{font-size:17px}
+  section.block{padding:72px 0}
+  .grid,.gallery,.edu,.skills,.tiles,.pbi-list{grid-template-columns:1fr}
+  .card{padding:22px}
+  .card.featured{gap:22px}
+  .report{padding:14px}
+  .contact{padding:32px 24px;border-radius:20px}
+  .principle{grid-template-columns:1fr;gap:10px;padding:24px}
+  .fact{grid-template-columns:84px 1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><i></i>Imad Qureshi</a>
+    <nav class="links" id="links">
+      <a href="#work">Work</a>
+      <a href="#dashboards">Dashboards</a>
+      <a href="#ai">AI automation</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn" href="assets/Imad_Qureshi_Resume_2026.pdf" target="_blank" rel="noopener">Résumé PDF
+      <svg class="icon" viewBox="0 0 24 24"><path d="M12 4v12m0 0 5-5m-5 5-5-5M4 20h16"/></svg></a>
+    <button class="menu-btn" id="menu" aria-label="Menu" aria-expanded="false">
+      <svg class="icon" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="wrap">
+    <div class="rv in">
+      <div class="mono">Data Scientist · Bolingbrook, IL</div>
+      <h1>I build the data layer <em>e‑commerce</em> runs on.</h1>
+      <p class="lead">Data Scientist at <strong>WeatherTech</strong>. I architected the company's analytics from the ground up: a BigQuery warehouse, API integrations for Amazon, Walmart and Salesforce, revenue forecasting, and the Power BI reporting leadership makes decisions with.</p>
+      <div class="cta">
+        <a class="btn primary" href="#work">See the work
+          <svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14m0 0-6-6m6 6-6 6"/></svg></a>
+        <a class="btn" href="assets/Imad_Qureshi_Resume_2026.pdf" target="_blank" rel="noopener">Download résumé
+          <svg class="icon" viewBox="0 0 24 24"><path d="M12 4v12m0 0 5-5m-5 5-5-5M4 20h16"/></svg></a>
+      </div>
+      <div class="social">
+        <a href="https://www.linkedin.com/in/imad-qureshi-811854208/" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
+        <a href="https://github.com/imadq" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3.1-.4 6.4-1.6 6.4-7A5.4 5.4 0 0 0 20 4.8 5 5 0 0 0 19.9 1s-1.2-.4-3.9 1.5a13.4 13.4 0 0 0-7 0C6.3.6 5.1 1 5.1 1A5 5 0 0 0 5 4.8a5.4 5.4 0 0 0-1.5 3.7c0 5.4 3.3 6.6 6.4 7a3.4 3.4 0 0 0-.9 2.6V22"/></svg>GitHub</a>
+        <a href="mailto:imadqureshi2@gmail.com"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>imadqureshi2@gmail.com</a>
+      </div>
+    </div>
+    <div class="portrait rv in">
+      <img src="assets/avatar.jpg" alt="Portrait of Imad Qureshi" width="640" height="640">
+      <div class="facts">
+        <div class="fact"><span class="mono">Certified</span><span>Microsoft PL‑300 · Power BI Data Analyst</span></div>
+        <div class="fact"><span class="mono">Education</span><span>B.S. Information &amp; Decision Sciences (Data Analytics), University of Illinois Chicago · Honors College</span></div>
+        <div class="fact"><span class="mono">Focus</span><span>E‑commerce analytics, forecasting, pipelines, and AI‑assisted automation</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stack">
+  <div class="wrap">
+    <span class="mono">Works with</span>
+    <div class="chips">
+      <span class="chip">BigQuery</span><span class="chip">Python</span><span class="chip">SQL</span><span class="chip">Power BI</span><span class="chip">Tableau</span><span class="chip">Azure Data Factory</span><span class="chip">Salesforce</span><span class="chip">Amazon SP‑API</span><span class="chip">Walmart Marketplace API</span><span class="chip">Google Analytics</span><span class="chip">R</span><span class="chip">Excel</span><span class="chip">Ollama</span><span class="chip">Claude Code</span>
+    </div>
+  </div>
+</div>
+
+<section class="block" id="work">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <div class="mono">01 — Selected work</div>
+        <h2>Systems that keep running after the demo.</h2>
+      </div>
+      <p class="lead">Integrations, warehouses, forecasts and automations built for real operations. Most of it is scheduled, monitored, and still in production.</p>
+    </div>
+
+    <div class="grid">
+      <article class="card featured rv">
+        <div class="body">
+          <div class="tags"><span class="tag">Python</span><span class="tag">REST APIs</span><span class="tag">BigQuery</span><span class="tag neutral">WeatherTech</span></div>
+          <h3>Marketplace API integration layer for Amazon, Walmart and Salesforce</h3>
+          <p>Each channel reported its numbers its own way, so every sales report started with hand‑exported spreadsheets. I wrote the Python connectors against the Amazon Selling Partner API, the Walmart Marketplace API and the Salesforce REST API, and landed orders, inventory, returns and account data in BigQuery on a schedule.</p>
+          <ul>
+            <li>Auth, token refresh, pagination, rate limits and retries handled per marketplace</li>
+            <li>Incremental loads with de‑duplication into partitioned BigQuery tables</li>
+            <li>One modeled sales table now feeds every channel report and forecast</li>
+          </ul>
+          <div class="foot"><span class="mono">Python · OAuth 2.0 · BigQuery · Cloud scheduling · Power BI</span></div>
+        </div>
+        <div class="pipe" aria-label="Pipeline diagram">
+          <div class="row"><div class="node">Amazon<small>Selling Partner API</small></div><div class="node">Walmart<small>Marketplace API</small></div><div class="node">Salesforce<small>REST API</small></div></div>
+          <div class="arrow"><svg class="icon" viewBox="0 0 24 24"><path d="M12 4v16m0 0 5-5m-5 5-5-5"/></svg></div>
+          <div class="row"><div class="node acc">Python connectors<small>auth · pagination · retries · incremental pulls</small></div></div>
+          <div class="arrow"><svg class="icon" viewBox="0 0 24 24"><path d="M12 4v16m0 0 5-5m-5 5-5-5"/></svg></div>
+          <div class="row"><div class="node">BigQuery<small>staged → modeled · partitioned · deduped</small></div></div>
+          <div class="arrow"><svg class="icon" viewBox="0 0 24 24"><path d="M12 4v16m0 0 5-5m-5 5-5-5"/></svg></div>
+          <div class="row"><div class="node">Power BI<small>channel &amp; executive reporting</small></div><div class="node">Forecasting<small>weekly · monthly</small></div></div>
+        </div>
+      </article>
+
+      <article class="card rv">
+        <div class="tags"><span class="tag">BigQuery</span><span class="tag">SQL</span><span class="tag neutral">WeatherTech</span></div>
+        <h3>Company‑wide analytics on BigQuery</h3>
+        <p>Designed the organization's end‑to‑end data analysis process: raw, staged and modeled layers in BigQuery, KPI definitions agreed with data engineering, and weekly, monthly and on‑demand reporting pipelines on top of them.</p>
+        <ul>
+          <li>Scalable foundation used by marketing, finance and operations</li>
+          <li>Query performance and storage tuned for large datasets</li>
+        </ul>
+        <div class="foot"><span class="mono">BigQuery · SQL · Python · Power BI · Tableau</span></div>
+      </article>
+
+      <article class="card rv">
+        <div class="tags"><span class="tag">Forecasting</span><span class="tag">Python</span><span class="tag neutral">WeatherTech</span></div>
+        <h3>Revenue forecasting for finance and leadership</h3>
+        <p>Weekly and monthly revenue forecasts built from channel‑level history, seasonality and promotion calendars, scored against actuals every cycle and presented to executives with the risks called out.</p>
+        <ul>
+          <li>Cross‑department inputs from marketing, finance and operations</li>
+          <li>Accuracy tracked over time, not just claimed once</li>
+        </ul>
+        <div class="foot"><span class="mono">Python · SQL · Power BI</span><span class="placeholder">[add forecast accuracy, e.g. MAPE]</span></div>
+      </article>
+
+      <article class="card rv">
+        <div class="tags"><span class="tag">AI</span><span class="tag">Vision model</span><span class="tag neutral">Personal</span></div>
+        <h3>AI listing generator for apparel resale</h3>
+        <p>A local vision‑language model (Qwen3‑VL via Ollama) reads product photos and drafts titles, attributes and descriptions for marketplace listings. A rules‑based QA gate holds anything that fails checks, so nothing goes live unreviewed.</p>
+        <ul>
+          <li>Runs on my own hardware at zero API cost</li>
+          <li>Structured output validated before it reaches the listing template</li>
+        </ul>
+        <div class="foot"><span class="mono">Python · Ollama · Qwen3‑VL · SQLite</span></div>
+      </article>
+
+      <article class="card rv">
+        <div class="tags"><span class="tag">Automation</span><span class="tag">OCR + LLM</span><span class="tag neutral">Client work</span></div>
+        <h3>Document‑to‑ledger invoice automation</h3>
+        <p>For a small accounting firm: pulls PDF invoices from a mailbox, extracts invoice number, amount and due date with OCR plus an LLM pass, posts them to the accounting system, files the PDF in the right client folder, and sends overdue reminders.</p>
+        <ul>
+          <li>Exceptions routed to a person instead of guessed</li>
+          <li>Daily processing report generated automatically</li>
+        </ul>
+        <div class="foot"><span class="mono">Python · IMAP · OCR · LLM · Scheduling</span></div>
+      </article>
+
+      <article class="card featured rv">
+        <div class="body">
+          <div class="tags"><span class="tag">Python</span><span class="tag">Plotly</span><span class="tag neutral">Personal</span></div>
+          <h3>Stock market analytics dashboard</h3>
+          <p>A Python web dashboard for equities research: one‑year price analysis with a 50‑day moving average, top performers by growth, and key metrics per ticker with paginated detail.</p>
+          <ul>
+            <li>Ticker selector drives every panel on the page</li>
+            <li>Price, 52‑week range and volume pulled and cached per symbol</li>
+          </ul>
+          <div class="foot"><span class="mono">Python · pandas · Plotly · Dash</span></div>
+        </div>
+        <div class="shot"><img src="assets/stock-dashboard.jpg" alt="Stock market dashboard showing top performers, a TSLA price chart with 50-day moving average, and key metrics" loading="lazy" width="1082" height="922"></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block dark" id="dashboards">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <div class="mono">02 — Power BI</div>
+        <h2>Reports leadership opens every Monday.</h2>
+      </div>
+      <p class="lead">Executive views that answer the question in one screen, with the detail one click away. Below is a live sample built the way I build production reports.</p>
+    </div>
+
+    <div class="report rv" id="report">
+      <div class="report-top">
+        <div class="report-title"><span class="dot"></span>E‑commerce performance · Executive view</div>
+        <div class="filters">
+          <span class="filter"><b>Last 12 months</b><svg viewBox="0 0 24 24" fill="none"><path d="m6 9 6 6 6-6"/></svg></span>
+          <span class="filter">Channel <b>All</b><svg viewBox="0 0 24 24" fill="none"><path d="m6 9 6 6 6-6"/></svg></span>
+          <span class="filter">Region <b>US</b><svg viewBox="0 0 24 24" fill="none"><path d="m6 9 6 6 6-6"/></svg></span>
+          <span class="sample">Sample data</span>
+        </div>
+      </div>
+
+      <div class="tiles">
+        <div class="tile"><span class="label">Net revenue</span><span class="value">$12.4M</span><span class="delta"><b><svg viewBox="0 0 24 24"><path d="M12 19V5m0 0-6 6m6-6 6 6"/></svg>8.3%</b> vs prior 12 months</span></div>
+        <div class="tile"><span class="label">Orders</span><span class="value">148.2K</span><span class="delta"><b><svg viewBox="0 0 24 24"><path d="M12 19V5m0 0-6 6m6-6 6 6"/></svg>5.1%</b> vs prior 12 months</span></div>
+        <div class="tile"><span class="label">Conversion rate</span><span class="value">3.4%</span><span class="delta"><b><svg viewBox="0 0 24 24"><path d="M12 19V5m0 0-6 6m6-6 6 6"/></svg>0.3 pts</b> vs prior 12 months</span></div>
+        <div class="tile"><span class="label">Forecast accuracy</span><span class="value">97.8%</span><span class="delta">MAPE 2.2% across 12 monthly forecasts</span></div>
+      </div>
+
+      <div class="panels">
+        <div class="panel">
+          <div class="panel-head">
+            <h4>Monthly revenue · actual vs forecast</h4>
+            <div class="legend"><span><i style="background:#17a672"></i>Actual</span><span><i style="background:#d9722f"></i>Forecast</span></div>
+          </div>
+          <div class="scroll-x"><svg class="chart" id="line" viewBox="0 0 780 272" data-months="Sep,Oct,Nov,Dec,Jan,Feb,Mar,Apr,May,Jun,Jul,Aug" data-actual="820,760,860,900,980,960,1020,1090,1060,1150,1320,1480" data-forecast="800,790,850,920,960,980,1010,1070,1080,1130,1280,1440" data-x0="52" data-x1="704" role="img" aria-label="Line chart of monthly revenue, actual versus forecast, for the last twelve months. Actual ends at 1.48 million dollars in August.">
+            <line class="grid" x1="52" x2="704" y1="24" y2="24"/><line class="grid" x1="52" x2="704" y1="76" y2="76"/><line class="grid" x1="52" x2="704" y1="128" y2="128"/><line class="grid" x1="52" x2="704" y1="180" y2="180"/><line class="axis" x1="52" x2="704" y1="232" y2="232"/>
+            <text x="44" y="28" text-anchor="end">$1.6M</text><text x="44" y="80" text-anchor="end">$1.2M</text><text x="44" y="132" text-anchor="end">$800K</text><text x="44" y="184" text-anchor="end">$400K</text><text x="44" y="236" text-anchor="end">0</text>
+            <text x="52" y="256" text-anchor="middle">Sep</text><text x="111.3" y="256" text-anchor="middle">Oct</text><text x="170.5" y="256" text-anchor="middle">Nov</text><text x="229.8" y="256" text-anchor="middle">Dec</text><text x="289.1" y="256" text-anchor="middle">Jan</text><text x="348.4" y="256" text-anchor="middle">Feb</text><text x="407.6" y="256" text-anchor="middle">Mar</text><text x="466.9" y="256" text-anchor="middle">Apr</text><text x="526.2" y="256" text-anchor="middle">May</text><text x="585.5" y="256" text-anchor="middle">Jun</text><text x="644.7" y="256" text-anchor="middle">Jul</text><text x="704" y="256" text-anchor="middle">Aug</text>
+            <path d="M52,125.4 L111.3,133.2 L170.5,120.2 L229.8,115 L289.1,104.6 L348.4,107.2 L407.6,99.4 L466.9,90.3 L526.2,94.2 L585.5,82.5 L644.7,60.4 L704,39.6 L704,232 L52,232 Z" fill="#17a672" opacity="0.12"/>
+            <polyline points="52,128 111.3,129.3 170.5,121.5 229.8,112.4 289.1,107.2 348.4,104.6 407.6,100.7 466.9,92.9 526.2,91.6 585.5,85.1 644.7,65.6 704,44.8" fill="none" stroke="#d9722f" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+            <polyline points="52,125.4 111.3,133.2 170.5,120.2 229.8,115 289.1,104.6 348.4,107.2 407.6,99.4 466.9,90.3 526.2,94.2 585.5,82.5 644.7,60.4 704,39.6" fill="none" stroke="#17a672" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+            <line class="xhair" id="xhair" x1="52" x2="52" y1="24" y2="232"/>
+            <circle id="dotA" cx="704" cy="39.6" r="4.5" fill="#17a672" stroke="#232730" stroke-width="2"/>
+            <circle id="dotF" cx="704" cy="44.8" r="4.5" fill="#d9722f" stroke="#232730" stroke-width="2" opacity="0"/>
+            <text class="lbl" x="714" y="43" font-weight="500">$1.48M</text>
+            <rect class="hit" x="52" y="24" width="652" height="208"/>
+          </svg></div>
+          <div class="tip" id="tip"></div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head"><h4>Revenue by channel</h4><span class="mono" style="text-transform:none;letter-spacing:0">Last 12 months</span></div>
+          <svg class="chart" id="bars" viewBox="0 0 380 194" role="img" aria-label="Bar chart of revenue by channel: Amazon 4.9 million, Walmart 2.6 million, Shopify DTC 2.3 million, Salesforce B2B 1.7 million, Other 0.9 million.">
+            <line class="axis" x1="104" x2="104" y1="8" y2="190"/>
+            <text class="lbl" x="96" y="27" text-anchor="end">Amazon</text>
+            <path class="bar" data-label="Amazon" data-value="$4.9M · 61.4K orders" d="M104,14 h231.2 a4,4 0 0 1 4,4 v10 a4,4 0 0 1 -4,4 H104 Z" fill="#17a672"/><text x="347" y="27">$4.9M</text>
+            <text class="lbl" x="96" y="65" text-anchor="end">Walmart</text>
+            <path class="bar" data-label="Walmart" data-value="$2.6M · 33.8K orders" d="M104,52 h120.8 a4,4 0 0 1 4,4 v10 a4,4 0 0 1 -4,4 H104 Z" fill="#17a672"/><text x="237" y="65">$2.6M</text>
+            <text class="lbl" x="96" y="103" text-anchor="end">Shopify DTC</text>
+            <path class="bar" data-label="Shopify DTC" data-value="$2.3M · 24.1K orders" d="M104,90 h106.4 a4,4 0 0 1 4,4 v10 a4,4 0 0 1 -4,4 H104 Z" fill="#17a672"/><text x="222" y="103">$2.3M</text>
+            <text class="lbl" x="96" y="141" text-anchor="end">Salesforce B2B</text>
+            <path class="bar" data-label="Salesforce B2B" data-value="$1.7M · 9.6K orders" d="M104,128 h77.6 a4,4 0 0 1 4,4 v10 a4,4 0 0 1 -4,4 H104 Z" fill="#17a672"/><text x="194" y="141">$1.7M</text>
+            <text class="lbl" x="96" y="179" text-anchor="end">Other</text>
+            <path class="bar" data-label="Other" data-value="$0.9M · 19.3K orders" d="M104,166 h39.2 a4,4 0 0 1 4,4 v10 a4,4 0 0 1 -4,4 H104 Z" fill="#17a672"/><text x="155" y="179">$0.9M</text>
+          </svg>
+          <div class="tip" id="tip2"></div>
+        </div>
+
+        <div class="panel table-panel">
+          <div class="panel-head"><h4>Channel detail</h4><span class="mono" style="text-transform:none;letter-spacing:0">Revenue, orders, average order value, year over year</span></div>
+          <table class="rt">
+            <thead><tr><th>Channel</th><th>Revenue</th><th>Orders</th><th>AOV</th><th>YoY</th></tr></thead>
+            <tbody>
+              <tr><td class="ch"><i></i>Amazon</td><td>$4.9M</td><td>61.4K</td><td>$80</td><td class="up">+9.2%</td></tr>
+              <tr><td class="ch"><i></i>Walmart</td><td>$2.6M</td><td>33.8K</td><td>$77</td><td class="up">+12.6%</td></tr>
+              <tr><td class="ch"><i></i>Shopify DTC</td><td>$2.3M</td><td>24.1K</td><td>$95</td><td class="up">+4.8%</td></tr>
+              <tr><td class="ch"><i></i>Salesforce B2B</td><td>$1.7M</td><td>9.6K</td><td>$177</td><td class="up">+6.1%</td></tr>
+              <tr><td class="ch"><i></i>Other</td><td>$0.9M</td><td>19.3K</td><td>$47</td><td class="dn">−2.4%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery rv">
+      <figure class="gal">
+        <div class="shot"><img src="assets/pbi-sales.jpg" alt="Power BI sales overview report in a dark theme with a sales trend, returning customer donut, transactions, progress gauge and quantity sold by month" loading="lazy" width="1600" height="927"></div>
+        <figcaption><b>Sales overview, dark theme</b>Sales trend, returning vs new customers, transactions, goal progress and quantity sold on one page.</figcaption>
+      </figure>
+      <figure class="gal">
+        <div class="shot"><img src="assets/pbi-cars.jpg" alt="Power BI car sales report with year-over-year revenue by month, sales by gender, share by vehicle type and a year-over-year change table by make" loading="lazy" width="1600" height="884"></div>
+        <figcaption><b>Year‑over‑year sales analysis</b>Monthly revenue by year, share by vehicle type, and a conditional‑formatted change table by make.</figcaption>
+      </figure>
+    </div>
+
+    <div class="pbi-list rv">
+      <div><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/><circle cx="19" cy="18" r="2"/></svg><b>Star‑schema models</b>Clean fact and dimension tables with DAX measures that agree with finance.</div>
+      <div><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg><b>Scheduled refresh</b>Straight from BigQuery, SQL Server and marketplace APIs, no manual exports.</div>
+      <div><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><b>Row‑level security</b>One report, department‑specific views, governed workspaces.</div>
+      <div><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg><b>Executive and mobile layouts</b>Designed to be read in a meeting or on a phone, not just on a monitor.</div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="ai">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <div class="mono">03 — Automating with AI</div>
+        <h2>Models where rules break down, plain code where they don't.</h2>
+      </div>
+      <p class="lead">Language and vision models are useful for the messy middle of a workflow: reading photos, parsing documents, drafting text. Everything they produce passes a check before it touches a system of record.</p>
+    </div>
+
+    <div class="three">
+      <div class="ai rv">
+        <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-8 9"/></svg></div>
+        <h3>Vision models for product data</h3>
+        <p>Photos in, structured listing data out. A local Qwen3‑VL model reads apparel photos and drafts titles, attributes and descriptions; a QA gate validates every field before the listing is written.</p>
+        <div class="how">Ollama · Qwen3‑VL · Python · schema validation</div>
+      </div>
+      <div class="ai rv">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg></div>
+        <h3>Document extraction</h3>
+        <p>Invoices and intake forms turned into clean records: OCR for the text, a language model for the fields, rules for the validation, and a human queue for the exceptions. Audit trail kept for every document.</p>
+        <div class="how">OCR · LLM extraction · validation rules · exception routing</div>
+      </div>
+      <div class="ai rv">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="m8 9 3 3-3 3M13 15h3"/><rect x="3" y="4" width="18" height="16" rx="2"/></svg></div>
+        <h3>Agentic workflows with Claude Code</h3>
+        <p>Coding agents that scaffold pipelines, run QA gates and maintain repos, with verification steps a person signs off on. This site was designed in Claude Design and built with Claude Code.</p>
+        <div class="how">Claude Code · scripted gates · reproducible toolchains</div>
+      </div>
+    </div>
+
+    <div class="principle rv">
+      <span class="mono">Operating rule</span>
+      <p>An AI output is a draft until a check says otherwise. The check is code, and the code is in version control.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="experience" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <div class="mono">04 — Experience</div>
+        <h2>Two industries, one habit: build the reporting first.</h2>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <div class="job rv">
+        <div class="when"><b>Dec 2023 — Present</b>Bolingbrook, IL</div>
+        <div>
+          <h3>Data Scientist</h3>
+          <div class="co">WeatherTech · automotive accessories, e‑commerce at scale</div>
+          <ul>
+            <li>Architected the organization's end‑to‑end data analysis process and set the foundation for analytics across departments</li>
+            <li>Engineered and deployed BigQuery infrastructure, streamlining storage and accelerating queries on large datasets</li>
+            <li>Built marketplace API integrations for Amazon, Walmart and Salesforce that feed a single sales model</li>
+            <li>Developed revenue forecasting models and partnered with data engineers on KPI reporting pipelines</li>
+            <li>Delivered data‑backed presentations to executive leadership and built dashboards in Power BI, Tableau and native ERP tools</li>
+          </ul>
+        </div>
+      </div>
+      <div class="job rv">
+        <div class="when"><b>Nov 2022 — Nov 2023</b>Bolingbrook, IL</div>
+        <div>
+          <h3>E‑Commerce Data Analyst</h3>
+          <div class="co">WeatherTech</div>
+          <ul>
+            <li>Built ad‑hoc dashboards in Power BI, Tableau and Google Analytics for real‑time monitoring of sales, conversion and customer behavior</li>
+            <li>Analyzed sales and customer data across sources to improve segmentation, targeting and personalization</li>
+            <li>Defined and tracked e‑commerce KPIs across platforms, reconciling Google Analytics, Salesforce and internal systems</li>
+            <li>Owned data cleaning for all company analysis and reporting</li>
+          </ul>
+        </div>
+      </div>
+      <div class="job rv">
+        <div class="when"><b>May 2022 — Nov 2022</b>Naperville, IL</div>
+        <div>
+          <h3>Operations Data Analyst</h3>
+          <div class="co">Transitions Care · hospice provider</div>
+          <ul>
+            <li>Built the company's first live dashboard and live reporting process in Power BI, working directly with executives on operations and KPIs</li>
+            <li>Established and managed database tables for integrity, storage and performance</li>
+            <li>Simplified data mappings and ETL using Azure Data Factory; designed and maintained data warehouses, dashboards and reporting systems</li>
+          </ul>
+        </div>
+      </div>
+      <div class="job rv">
+        <div class="when"><b>Feb 2022 — May 2022</b>Naperville, IL</div>
+        <div>
+          <h3>Marketing Data Analyst</h3>
+          <div class="co">Transitions Care</div>
+          <ul>
+            <li>Market research on demographics, consumer behavior and competition to pick campaign locations</li>
+            <li>GIS mapping for targeted campaigns and Power BI models for strategic planning</li>
+            <li>Marketing performance dashboards with real‑time visibility into campaign effectiveness</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="edu">
+      <div class="card rv">
+        <div class="tags"><span class="tag">Education</span></div>
+        <h3>University of Illinois Chicago</h3>
+        <p>B.S. Information &amp; Decision Sciences, Data Analytics concentration. Honors College. December 2021.</p>
+      </div>
+      <div class="card rv">
+        <div class="tags"><span class="tag">Certification</span></div>
+        <h3>Microsoft PL‑300</h3>
+        <p>Power BI Data Analyst Associate: data modeling, DAX, visualization, deployment and security.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="skills" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head rv" style="margin-bottom:36px">
+      <div>
+        <div class="mono">05 — Toolkit</div>
+        <h2>What I reach for.</h2>
+      </div>
+    </div>
+    <div class="skills rv">
+      <div class="skill"><h3>Data engineering</h3><div class="chips"><span class="chip">BigQuery</span><span class="chip">SQL</span><span class="chip">Python</span><span class="chip">Azure Data Factory</span><span class="chip">ETL / ELT</span><span class="chip">REST APIs</span><span class="chip">SharePoint</span></div></div>
+      <div class="skill"><h3>Analytics &amp; BI</h3><div class="chips"><span class="chip">Power BI</span><span class="chip">DAX</span><span class="chip">Tableau</span><span class="chip">Google Analytics</span><span class="chip">Excel</span><span class="chip">GIS mapping</span></div></div>
+      <div class="skill"><h3>Forecasting &amp; modeling</h3><div class="chips"><span class="chip">Time series</span><span class="chip">Python</span><span class="chip">R</span><span class="chip">pandas</span><span class="chip">Plotly / Dash</span></div></div>
+      <div class="skill"><h3>AI &amp; automation</h3><div class="chips"><span class="chip">LLM pipelines</span><span class="chip">Vision models</span><span class="chip">Ollama</span><span class="chip">Claude Code</span><span class="chip">OCR</span><span class="chip">Scheduling</span></div></div>
+      <div class="skill"><h3>Platforms</h3><div class="chips"><span class="chip">Amazon SP‑API</span><span class="chip">Walmart Marketplace</span><span class="chip">Salesforce</span><span class="chip">Shopify</span><span class="chip">ERP reporting</span></div></div>
+      <div class="skill"><h3>Ways of working</h3><div class="chips"><span class="chip">Executive presentations</span><span class="chip">KPI definition</span><span class="chip">Cross‑functional delivery</span><span class="chip">Git</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="contact" style="padding-top:0">
+  <div class="wrap">
+    <div class="contact rv">
+      <div>
+        <div class="mono">06 — Contact</div>
+        <h2>Have a data problem? Let's talk.</h2>
+        <p class="lead">Full‑time roles, contract work, and dashboard or automation projects. Based in the Chicago area, open to remote.</p>
+        <a class="email" href="mailto:imadqureshi2@gmail.com"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>imadqureshi2@gmail.com</a>
+      </div>
+      <div class="list">
+        <a href="https://www.linkedin.com/in/imad-qureshi-811854208/" target="_blank" rel="noopener">LinkedIn <span>linkedin.com/in/imad-qureshi</span></a>
+        <a href="https://github.com/imadq" target="_blank" rel="noopener">GitHub <span>github.com/imadq</span></a>
+        <a href="https://www.upwork.com/freelancers/~013ce322fad7038911" target="_blank" rel="noopener">Upwork <span>freelance profile</span></a>
+        <a href="https://www.fiverr.com/s/P2XEExg" target="_blank" rel="noopener">Fiverr <span>freelance profile</span></a>
+        <a href="assets/Imad_Qureshi_Resume_2026.pdf" target="_blank" rel="noopener">Résumé <span>PDF</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Imad Qureshi · Bolingbrook, IL</span>
+    <span>Designed in Claude Design, built with Claude Code, hosted on GitHub Pages.</span>
+  </div>
+</footer>
+
+<script src="site.js" defer></script>
+</body>
+</html>
