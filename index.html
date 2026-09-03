@@ -348,7 +348,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
   .three{grid-template-columns:minmax(0,1fr)}
   .skills{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .contact{grid-template-columns:1fr;padding:44px}
+  .contact{grid-template-columns:minmax(0,1fr);padding:44px;min-width:0}
+  .contact .list a span,.contact .email{overflow-wrap:anywhere}
   .timeline::before{left:6px}
   .job{grid-template-columns:1fr;gap:10px;padding:26px 0 26px 30px}
   .job::before{left:0;top:34px}
@@ -378,6 +379,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   .report-top{flex-direction:column;align-items:flex-start}
   .contact{padding:32px 24px;border-radius:20px}
   .principle{grid-template-columns:1fr;gap:10px;padding:24px}
+}
+@media (max-width:380px){
+  .hero h1{font-size:38px}
+  .contact{padding:28px 18px}
 }
 </style>
 <noscript><style>.rv{opacity:1;transform:none}</style></noscript>
