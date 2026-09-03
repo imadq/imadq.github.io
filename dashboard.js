@@ -8,10 +8,10 @@
   /* ---------- synthetic dataset ---------- */
   function rng(seed) { return function () { seed |= 0; seed = seed + 0x6D2B79F5 | 0; var t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
   var CH = [
-    { name: 'Amazon',         base: 13400, aov: 80,  conv: 0.034, ret: 0.06, wk: [1, 1, 1, 1, 1, 1.06, 1.08],       cat: [0.30, 0.22, 0.18, 0.12, 0.10, 0.08] },
-    { name: 'Walmart',        base: 7100,  aov: 77,  conv: 0.029, ret: 0.07, wk: [1, 1, 1, 1, 1, 1.05, 1.06],       cat: [0.28, 0.25, 0.15, 0.12, 0.12, 0.08] },
-    { name: 'DTC site',       base: 6300,  aov: 95,  conv: 0.041, ret: 0.04, wk: [1, 1, 1, 1, 1.03, 1.12, 1.10],    cat: [0.34, 0.18, 0.20, 0.10, 0.10, 0.08] },
-    { name: 'Salesforce B2B', base: 4700,  aov: 177, conv: 0.052, ret: 0.02, wk: [1.08, 1.1, 1.1, 1.08, 1.0, 0.45, 0.35], cat: [0.40, 0.25, 0.15, 0.10, 0.05, 0.05] }
+    { name: 'Marketplaces',   base: 9800,  aov: 82,  conv: 0.034, ret: 0.06, wk: [1, 1, 1, 1, 1, 1.06, 1.08],       cat: [0.30, 0.22, 0.18, 0.12, 0.10, 0.08] },
+    { name: 'Web store',      base: 8200,  aov: 96,  conv: 0.041, ret: 0.04, wk: [1, 1, 1, 1, 1, 1.05, 1.06],       cat: [0.28, 0.25, 0.15, 0.12, 0.12, 0.08] },
+    { name: 'Retail partners', base: 6300, aov: 74,  conv: 0.029, ret: 0.07, wk: [1, 1, 1, 1, 1.03, 1.12, 1.10],    cat: [0.34, 0.18, 0.20, 0.10, 0.10, 0.08] },
+    { name: 'Wholesale',      base: 5100,  aov: 168, conv: 0.052, ret: 0.02, wk: [1.08, 1.1, 1.1, 1.08, 1.0, 0.45, 0.35], cat: [0.40, 0.25, 0.15, 0.10, 0.05, 0.05] }
   ];
   var CATS = ['Apparel', 'Home & Kitchen', 'Electronics', 'Outdoors', 'Beauty', 'Toys'];
   var END = Date.UTC(2026, 7, 31);
@@ -31,7 +31,7 @@
       var ts = END - (DAYS - 1 - d) * MS;
       var dt = new Date(ts);
       var doy = Math.floor((ts - Date.UTC(dt.getUTCFullYear(), 0, 0)) / MS);
-      var trend = 1 + 0.085 * (d / 365);
+      var trend = 1 + 0.085 * (d / 365); /* arbitrary demo growth, not a real figure */
       var row = { t: ts, ch: [] };
       var mkey = dt.getUTCFullYear() * 12 + dt.getUTCMonth();
       if (!bias[mkey]) bias[mkey] = CH.map(function () { return 1 + (rb() - 0.5) * 0.09; });
