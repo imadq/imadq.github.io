@@ -254,6 +254,10 @@ table.board td.tools{font-family:var(--mono);font-size:12.5px}
 .pnode:not(:last-child)::after{content:"";position:absolute;left:21px;top:62px;bottom:-14px;width:2px;background:var(--line-2)}
 .pnode b{display:block;font-weight:600;color:var(--ink);font-size:16px;line-height:1.3;margin-top:2px}
 .pnode span{display:block;color:var(--ink-2);font-size:14.5px;margin-top:3px}
+.three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.ai{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:26px;display:flex;flex-direction:column;gap:12px}
+.ai h3{font-size:21px;font-weight:600}
+.ai p{color:var(--ink-2);font-size:15.5px}
 .how{margin-top:22px}
 .nums{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;margin-top:22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:26px 30px}
 .num-tile b{display:block;font-size:clamp(32px,3.6vw,44px);font-weight:600;letter-spacing:-0.03em;line-height:1;color:var(--ink)}
@@ -315,6 +319,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   .panels{grid-template-columns:1fr}
   .pbi-list{grid-template-columns:repeat(2,minmax(0,1fr))}
   .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .three{grid-template-columns:minmax(0,1fr)}
   .skills{grid-template-columns:repeat(2,minmax(0,1fr))}
   .contact{grid-template-columns:1fr;padding:44px}
   .timeline::before{left:6px}
