@@ -262,6 +262,11 @@ table.board td.tools{font-family:var(--mono);font-size:12.5px}
 .nums{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;margin-top:22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:26px 30px}
 .num-tile b{display:block;font-size:clamp(32px,3.6vw,44px);font-weight:600;letter-spacing:-0.03em;line-height:1;color:var(--ink)}
 .num-tile span{display:block;color:var(--ink-2);font-size:14.5px;margin-top:8px}
+.depts{margin-top:22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px 30px 26px}
+.depts-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.dept-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.dept{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--bg);font-weight:600;font-size:15px;color:var(--ink);min-width:0}
+.dept svg{width:20px;height:20px;stroke:var(--accent-ink);fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
 
 /* experience */
 .timeline{display:flex;flex-direction:column;position:relative}
@@ -314,6 +319,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   .sec-head{grid-template-columns:1fr;gap:16px}
   .about{grid-template-columns:1fr;gap:24px}
   .nums{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .dept-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .card.featured{grid-template-columns:1fr}
   .tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
   .panels{grid-template-columns:1fr}
@@ -417,7 +423,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <div class="wrap">
     <span class="mono">Works with</span>
     <div class="chips">
-      <span class="chip">BigQuery</span><span class="chip">Python</span><span class="chip">SQL</span><span class="chip">Power BI</span><span class="chip">Tableau</span><span class="chip">Azure Data Factory</span><span class="chip">Salesforce</span><span class="chip">Amazon SP-API</span><span class="chip">Walmart Marketplace API</span><span class="chip">Google Analytics</span><span class="chip">R</span><span class="chip">Excel</span><span class="chip">Task Scheduler</span><span class="chip">GitHub Actions</span><span class="chip">Ollama</span><span class="chip">Claude Code</span>
+      <span class="chip">BigQuery</span><span class="chip">Python</span><span class="chip">SQL</span><span class="chip">Power BI</span><span class="chip">DAX</span><span class="chip">Tableau</span><span class="chip">Azure Data Factory</span><span class="chip">Salesforce</span><span class="chip">Amazon SP-API</span><span class="chip">Walmart Marketplace API</span><span class="chip">Google Analytics</span><span class="chip">R</span><span class="chip">Excel</span><span class="chip">Task Scheduler</span><span class="chip">GitHub Actions</span><span class="chip">Ollama</span><span class="chip">Claude Code</span>
     </div>
   </div>
 </div>
@@ -456,6 +462,19 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <div class="num-tile" role="listitem"><b>2×</b><span>first analytics hire</span></div>
       <div class="num-tile" role="listitem"><b>3</b><span>marketplace and CRM APIs integrated</span></div>
       <div class="num-tile" role="listitem"><b>PL-300</b><span>Power BI Data Analyst Associate</span></div>
+    </div>
+    <div class="depts rv" role="list" aria-label="Departments I have worked with">
+      <div class="depts-head"><span class="mono">Departments I've worked with</span><span class="mono" style="text-transform:none;letter-spacing:0">Data from eight parts of the business, across two companies</span></div>
+      <div class="dept-grid">
+        <div class="dept" role="listitem"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 2v20"/><path d="M17 6.5c0-1.7-2.2-3-5-3s-5 1.3-5 3 2.2 3 5 3 5 1.3 5 3-2.2 3-5 3-5-1.3-5-3"/></svg>Finance</div>
+        <div class="dept" role="listitem"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 11v2a1 1 0 0 0 1 1h2l5 4V6l-5 4H4a1 1 0 0 0-1 1z"/><path d="M15 9a4 4 0 0 1 0 6M18 6a8 8 0 0 1 0 12"/></svg>Marketing</div>
+        <div class="dept" role="listitem"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/><path d="M3 4h2l2.5 11h11L21 8H6.5"/></svg>E-commerce</div>
+        <div class="dept" role="listitem"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M21.5 20a6.5 6.5 0 0 0-4.5-6.2"/></svg>HR</div>
+        <div class="dept" role="listitem"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>Sales</div>
+        <div class="dept" role="listitem"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 6h11v10H3z"/><path d="M14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>Logistics</div>
+        <div class="dept" role="listitem"><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M7 11h2l1.5-3 3 6 1.5-3h2"/><path d="M9 21h6"/></svg>Medical equipment</div>
+        <div class="dept" role="listitem"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20.8 8.6a4.6 4.6 0 0 0-8.8-1.9 4.6 4.6 0 0 0-8.8 1.9C3.2 13 12 20 12 20s8.8-7 8.8-11.4z"/></svg>Healthcare</div>
+      </div>
     </div>
   </div>
 </section>
@@ -826,8 +845,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <div class="list">
         <a href="https://www.linkedin.com/in/imad-qureshi-811854208/" target="_blank" rel="noopener">LinkedIn <span>linkedin.com/in/imad-qureshi-811854208</span></a>
         <a href="https://github.com/imadq" target="_blank" rel="noopener">GitHub <span>github.com/imadq</span></a>
-        <a href="https://www.upwork.com/freelancers/~013ce322fad7038911" target="_blank" rel="noopener">Upwork <span>freelance profile</span></a>
-        <a href="https://www.fiverr.com/s/P2XEExg" target="_blank" rel="noopener">Fiverr <span>freelance profile</span></a>
         <a href="assets/Imad_Qureshi_Resume_2026.pdf" target="_blank" rel="noopener">Résumé <span>PDF</span></a>
       </div>
     </div>
