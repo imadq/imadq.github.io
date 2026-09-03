@@ -17,9 +17,9 @@
 <style>
 :root{
   --bg:#f6f4ee;--surface:#fffdf8;--surface-2:#efece4;
-  --ink:#15140f;--ink-2:#4b4942;--muted:#86837b;--line:#e2dfd5;--line-2:#d0ccbf;
+  --ink:#15140f;--ink-2:#4b4942;--muted:#6b685f;--line:#e2dfd5;--line-2:#d0ccbf;
   --accent:#0f8f66;--accent-ink:#0a6b4c;--accent-soft:#e0f2ea;--accent-line:#b9e0cf;
-  --d-bg:#14161b;--d-card:#1d2027;--d-card-2:#232730;--d-ink:#f1f0eb;--d-ink-2:#b3b7c0;--d-muted:#7c8190;--d-line:#2c3039;--d-line-2:#363b46;
+  --d-bg:#14161b;--d-card:#1d2027;--d-card-2:#232730;--d-ink:#f1f0eb;--d-ink-2:#b3b7c0;--d-muted:#9298a6;--d-line:#2c3039;--d-line-2:#363b46;
   --s1:#17a672;--s2:#d9722f;--s3:#5b84ea;--good:#2fbf83;
   --display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
   --body:"Instrument Sans","Segoe UI",system-ui,sans-serif;
@@ -32,6 +32,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font
 a{color:var(--accent-ink);text-decoration:none}
 a:hover{color:var(--accent)}
 img{max-width:100%;display:block}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
 h1,h2,h3,h4{font-family:var(--display);margin:0;letter-spacing:-0.02em;text-wrap:balance}
 p{margin:0}
 .wrap{max-width:var(--wrap);margin:0 auto;padding:0 28px}
@@ -111,7 +112,7 @@ section.block{padding:104px 0}
 .pipe .node{flex:1;background:var(--surface);border:1px solid var(--line-2);border-radius:10px;padding:10px 12px;font-family:var(--mono);font-size:12px;line-height:1.35;color:var(--ink)}
 .pipe .node small{display:block;color:var(--muted);font-size:11px;margin-top:3px}
 .pipe .node.acc{border-color:var(--accent-line);background:var(--accent-soft);color:var(--accent-ink)}
-.pipe .node.acc small{color:var(--accent-ink);opacity:.8}
+.pipe .node.acc small{color:var(--accent-ink)}
 .pipe .arrow{display:flex;justify-content:center;color:var(--muted)}
 .pipe .arrow svg{width:16px;height:16px}
 
@@ -127,7 +128,7 @@ section.block{padding:104px 0}
 .filter{display:inline-flex;align-items:center;gap:8px;height:34px;padding:0 12px;border-radius:8px;border:1px solid var(--d-line-2);background:var(--d-card-2);color:var(--d-ink-2);font-size:13px}
 .filter b{color:var(--d-ink);font-weight:500}
 .filter svg{width:14px;height:14px;stroke:var(--d-muted)}
-.sample{font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--d-muted);border:1px dashed var(--d-line-2);padding:4px 8px;border-radius:6px}
+.sample{font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--d-ink);border:1px dashed var(--d-ink-2);padding:5px 9px;border-radius:6px}
 .tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:12px}
 .tile{background:var(--d-card-2);border:1px solid var(--d-line);border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;gap:6px}
 .tile .label{font-size:13px;color:var(--d-ink-2)}
@@ -138,7 +139,7 @@ section.block{padding:104px 0}
 .panels{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:12px}
 .panel{background:var(--d-card-2);border:1px solid var(--d-line);border-radius:12px;padding:16px 18px 12px;min-width:0;position:relative}
 .panel-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:8px;flex-wrap:wrap}
-.panel h4{font-family:var(--body);font-size:14px;font-weight:600;color:var(--d-ink);letter-spacing:0}
+.panel h3{font-family:var(--body);font-size:14px;font-weight:600;color:var(--d-ink);letter-spacing:0}
 .legend{display:flex;gap:16px;font-size:12px;color:var(--d-ink-2)}
 .legend span{display:inline-flex;align-items:center;gap:7px}
 .legend i{width:16px;height:2px;border-radius:2px;display:inline-block}
@@ -163,8 +164,8 @@ table.rt th{font-family:var(--mono);font-weight:500;font-size:11px;letter-spacin
 table.rt th:first-child,table.rt td:first-child{text-align:left}
 table.rt td{padding:9px 10px;text-align:right;border-bottom:1px solid var(--d-line);font-variant-numeric:tabular-nums;color:var(--d-ink)}
 table.rt tr:last-child td{border-bottom:0}
-table.rt td.ch{display:flex;align-items:center;gap:9px;color:var(--d-ink)}
-table.rt td.ch i{width:8px;height:8px;border-radius:2px;background:var(--s1);display:inline-block}
+table.rt td.ch{color:var(--d-ink)}
+table.rt td.ch i{width:8px;height:8px;border-radius:2px;background:var(--s1);display:inline-block;vertical-align:middle;margin-right:9px}
 table.rt .up{color:var(--good)}
 table.rt .dn{color:#e07070}
 .gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-top:64px}
@@ -265,6 +266,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   .fact{grid-template-columns:84px 1fr}
 }
 </style>
+<noscript><style>.rv{opacity:1;transform:none}</style></noscript>
 </head>
 <body>
 
@@ -279,9 +281,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <a href="#contact">Contact</a>
     </nav>
     <a class="btn" href="assets/Imad_Qureshi_Resume_2026.pdf" target="_blank" rel="noopener">Résumé PDF
-      <svg class="icon" viewBox="0 0 24 24"><path d="M12 4v12m0 0 5-5m-5 5-5-5M4 20h16"/></svg></a>
-    <button class="menu-btn" id="menu" aria-label="Menu" aria-expanded="false">
-      <svg class="icon" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <svg aria-hidden="true" class="icon" viewBox="0 0 24 24"><path d="M12 4v12m0 0 5-5m-5 5-5-5M4 20h16"/></svg></a>
+    <button class="menu-btn" id="menu" aria-label="Menu" aria-expanded="false" aria-controls="links">
+      <svg aria-hidden="true" class="icon" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
   </div>
 </header>
 
@@ -291,26 +293,26 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <div class="wrap">
     <div class="rv in">
       <div class="mono">Data Scientist · Bolingbrook, IL</div>
-      <h1>I build the data layer <em>e‑commerce</em> runs on.</h1>
+      <h1>I build the data layer <em>e-commerce</em> runs on.</h1>
       <p class="lead">Data Scientist at <strong>WeatherTech</strong>. I architected the company's analytics from the ground up: a BigQuery warehouse, API integrations for Amazon, Walmart and Salesforce, revenue forecasting, and the Power BI reporting leadership makes decisions with.</p>
       <div class="cta">
         <a class="btn primary" href="#work">See the work
-          <svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14m0 0-6-6m6 6-6 6"/></svg></a>
-        <a class="btn" href="assets/Imad_Qureshi_Resume_2026.pdf" target="_blank" rel="noopener">Download résumé
-          <svg class="icon" viewBox="0 0 24 24"><path d="M12 4v12m0 0 5-5m-5 5-5-5M4 20h16"/></svg></a>
+          <svg aria-hidden="true" class="icon" viewBox="0 0 24 24"><path d="M5 12h14m0 0-6-6m6 6-6 6"/></svg></a>
+        <a class="btn" href="assets/Imad_Qureshi_Resume_2026.pdf" download>Download résumé
+          <svg aria-hidden="true" class="icon" viewBox="0 0 24 24"><path d="M12 4v12m0 0 5-5m-5 5-5-5M4 20h16"/></svg></a>
       </div>
       <div class="social">
-        <a href="https://www.linkedin.com/in/imad-qureshi-811854208/" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
-        <a href="https://github.com/imadq" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3.1-.4 6.4-1.6 6.4-7A5.4 5.4 0 0 0 20 4.8 5 5 0 0 0 19.9 1s-1.2-.4-3.9 1.5a13.4 13.4 0 0 0-7 0C6.3.6 5.1 1 5.1 1A5 5 0 0 0 5 4.8a5.4 5.4 0 0 0-1.5 3.7c0 5.4 3.3 6.6 6.4 7a3.4 3.4 0 0 0-.9 2.6V22"/></svg>GitHub</a>
-        <a href="mailto:imadqureshi2@gmail.com"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>imadqureshi2@gmail.com</a>
+        <a href="https://www.linkedin.com/in/imad-qureshi-811854208/" target="_blank" rel="noopener"><svg aria-hidden="true" class="icon" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
+        <a href="https://github.com/imadq" target="_blank" rel="noopener"><svg aria-hidden="true" class="icon" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3.1-.4 6.4-1.6 6.4-7A5.4 5.4 0 0 0 20 4.8 5 5 0 0 0 19.9 1s-1.2-.4-3.9 1.5a13.4 13.4 0 0 0-7 0C6.3.6 5.1 1 5.1 1A5 5 0 0 0 5 4.8a5.4 5.4 0 0 0-1.5 3.7c0 5.4 3.3 6.6 6.4 7a3.4 3.4 0 0 0-.9 2.6V22"/></svg>GitHub</a>
+        <a href="mailto:imadqureshi2@gmail.com"><svg aria-hidden="true" class="icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>imadqureshi2@gmail.com</a>
       </div>
     </div>
     <div class="portrait rv in">
       <img src="assets/avatar.jpg" alt="Portrait of Imad Qureshi" width="640" height="640">
       <div class="facts">
-        <div class="fact"><span class="mono">Certified</span><span>Microsoft PL‑300 · Power BI Data Analyst</span></div>
-        <div class="fact"><span class="mono">Education</span><span>B.S. Information &amp; Decision Sciences (Data Analytics), University of Illinois Chicago · Honors College</span></div>
-        <div class="fact"><span class="mono">Focus</span><span>E‑commerce analytics, forecasting, pipelines, and AI‑assisted automation</span></div>
+        <div class="fact"><span class="mono">Certified</span><span>Microsoft PL-300 · Power BI Data Analyst Associate</span></div>
+        <div class="fact"><span class="mono">Education</span><span>B.S. Information &amp; Decision Sciences (Data Analytics), University of Illinois Chicago · Honors College, 2021</span></div>
+        <div class="fact"><span class="mono">Focus</span><span>E-commerce analytics, forecasting, pipelines, and AI-assisted automation</span></div>
       </div>
     </div>
   </div>
@@ -320,7 +322,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <div class="wrap">
     <span class="mono">Works with</span>
     <div class="chips">
-      <span class="chip">BigQuery</span><span class="chip">Python</span><span class="chip">SQL</span><span class="chip">Power BI</span><span class="chip">Tableau</span><span class="chip">Azure Data Factory</span><span class="chip">Salesforce</span><span class="chip">Amazon SP‑API</span><span class="chip">Walmart Marketplace API</span><span class="chip">Google Analytics</span><span class="chip">R</span><span class="chip">Excel</span><span class="chip">Ollama</span><span class="chip">Claude Code</span>
+      <span class="chip">BigQuery</span><span class="chip">Python</span><span class="chip">SQL</span><span class="chip">Power BI</span><span class="chip">Tableau</span><span class="chip">Azure Data Factory</span><span class="chip">Salesforce</span><span class="chip">Amazon SP-API</span><span class="chip">Walmart Marketplace API</span><span class="chip">Google Analytics</span><span class="chip">R</span><span class="chip">Excel</span><span class="chip">Ollama</span><span class="chip">Claude Code</span>
     </div>
   </div>
 </div>
@@ -339,30 +341,30 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <article class="card featured rv">
         <div class="body">
           <div class="tags"><span class="tag">Python</span><span class="tag">REST APIs</span><span class="tag">BigQuery</span><span class="tag neutral">WeatherTech</span></div>
-          <h3>Marketplace API integration layer for Amazon, Walmart and Salesforce</h3>
-          <p>Each channel reported its numbers its own way, so every sales report started with hand‑exported spreadsheets. I wrote the Python connectors against the Amazon Selling Partner API, the Walmart Marketplace API and the Salesforce REST API, and landed orders, inventory, returns and account data in BigQuery on a schedule.</p>
+          <h3>API integration layer for Amazon, Walmart and Salesforce</h3>
+          <p>Each channel reported its numbers its own way, so every sales report started with hand-exported spreadsheets. I wrote the Python connectors against the Amazon Selling Partner API, the Walmart Marketplace API and the Salesforce REST API, and landed orders, inventory, returns and account data in BigQuery on a schedule.</p>
           <ul>
             <li>Auth, token refresh, pagination, rate limits and retries handled per marketplace</li>
-            <li>Incremental loads with de‑duplication into partitioned BigQuery tables</li>
+            <li>Incremental loads with de-duplication into partitioned BigQuery tables</li>
             <li>One modeled sales table now feeds every channel report and forecast</li>
           </ul>
           <div class="foot"><span class="mono">Python · OAuth 2.0 · BigQuery · Cloud scheduling · Power BI</span></div>
         </div>
-        <div class="pipe" aria-label="Pipeline diagram">
+        <div class="pipe" role="img" aria-label="Pipeline diagram: Amazon, Walmart and Salesforce APIs feed Python connectors, which load BigQuery, which feeds Power BI and forecasting">
           <div class="row"><div class="node">Amazon<small>Selling Partner API</small></div><div class="node">Walmart<small>Marketplace API</small></div><div class="node">Salesforce<small>REST API</small></div></div>
-          <div class="arrow"><svg class="icon" viewBox="0 0 24 24"><path d="M12 4v16m0 0 5-5m-5 5-5-5"/></svg></div>
+          <div class="arrow"><svg aria-hidden="true" class="icon" viewBox="0 0 24 24"><path d="M12 4v16m0 0 5-5m-5 5-5-5"/></svg></div>
           <div class="row"><div class="node acc">Python connectors<small>auth · pagination · retries · incremental pulls</small></div></div>
-          <div class="arrow"><svg class="icon" viewBox="0 0 24 24"><path d="M12 4v16m0 0 5-5m-5 5-5-5"/></svg></div>
+          <div class="arrow"><svg aria-hidden="true" class="icon" viewBox="0 0 24 24"><path d="M12 4v16m0 0 5-5m-5 5-5-5"/></svg></div>
           <div class="row"><div class="node">BigQuery<small>staged → modeled · partitioned · deduped</small></div></div>
-          <div class="arrow"><svg class="icon" viewBox="0 0 24 24"><path d="M12 4v16m0 0 5-5m-5 5-5-5"/></svg></div>
+          <div class="arrow"><svg aria-hidden="true" class="icon" viewBox="0 0 24 24"><path d="M12 4v16m0 0 5-5m-5 5-5-5"/></svg></div>
           <div class="row"><div class="node">Power BI<small>channel &amp; executive reporting</small></div><div class="node">Forecasting<small>weekly · monthly</small></div></div>
         </div>
       </article>
 
       <article class="card rv">
         <div class="tags"><span class="tag">BigQuery</span><span class="tag">SQL</span><span class="tag neutral">WeatherTech</span></div>
-        <h3>Company‑wide analytics on BigQuery</h3>
-        <p>Designed the organization's end‑to‑end data analysis process: raw, staged and modeled layers in BigQuery, KPI definitions agreed with data engineering, and weekly, monthly and on‑demand reporting pipelines on top of them.</p>
+        <h3>Company-wide analytics on BigQuery</h3>
+        <p>Designed the organization's end-to-end data analysis process: raw, staged and modeled layers in BigQuery, KPI definitions agreed with data engineering, and weekly, monthly and on-demand reporting pipelines on top of them.</p>
         <ul>
           <li>Scalable foundation used by marketing, finance and operations</li>
           <li>Query performance and storage tuned for large datasets</li>
@@ -373,9 +375,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <article class="card rv">
         <div class="tags"><span class="tag">Forecasting</span><span class="tag">Python</span><span class="tag neutral">WeatherTech</span></div>
         <h3>Revenue forecasting for finance and leadership</h3>
-        <p>Weekly and monthly revenue forecasts built from channel‑level history, seasonality and promotion calendars, scored against actuals every cycle and presented to executives with the risks called out.</p>
+        <p>Weekly and monthly revenue forecasts built from channel-level history, seasonality and promotion calendars, scored against actuals every cycle and presented to executives with the risks called out.</p>
         <ul>
-          <li>Cross‑department inputs from marketing, finance and operations</li>
+          <li>Cross-department inputs from marketing, finance and operations</li>
           <li>Accuracy tracked over time, not just claimed once</li>
         </ul>
         <div class="foot"><span class="mono">Python · SQL · Power BI</span><span class="placeholder">[add forecast accuracy, e.g. MAPE]</span></div>
@@ -384,17 +386,17 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <article class="card rv">
         <div class="tags"><span class="tag">AI</span><span class="tag">Vision model</span><span class="tag neutral">Personal</span></div>
         <h3>AI listing generator for apparel resale</h3>
-        <p>A local vision‑language model (Qwen3‑VL via Ollama) reads product photos and drafts titles, attributes and descriptions for marketplace listings. A rules‑based QA gate holds anything that fails checks, so nothing goes live unreviewed.</p>
+        <p>A local vision-language model (Qwen3-VL via Ollama) reads product photos and drafts titles, attributes and descriptions for marketplace listings. A rules-based QA gate holds anything that fails checks, so nothing goes live unreviewed.</p>
         <ul>
           <li>Runs on my own hardware at zero API cost</li>
           <li>Structured output validated before it reaches the listing template</li>
         </ul>
-        <div class="foot"><span class="mono">Python · Ollama · Qwen3‑VL · SQLite</span></div>
+        <div class="foot"><span class="mono">Python · Ollama · Qwen3-VL · SQLite</span></div>
       </article>
 
       <article class="card rv">
         <div class="tags"><span class="tag">Automation</span><span class="tag">OCR + LLM</span><span class="tag neutral">Client work</span></div>
-        <h3>Document‑to‑ledger invoice automation</h3>
+        <h3>Document-to-ledger invoice automation</h3>
         <p>For a small accounting firm: pulls PDF invoices from a mailbox, extracts invoice number, amount and due date with OCR plus an LLM pass, posts them to the accounting system, files the PDF in the right client folder, and sends overdue reminders.</p>
         <ul>
           <li>Exceptions routed to a person instead of guessed</li>
@@ -407,10 +409,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         <div class="body">
           <div class="tags"><span class="tag">Python</span><span class="tag">Plotly</span><span class="tag neutral">Personal</span></div>
           <h3>Stock market analytics dashboard</h3>
-          <p>A Python web dashboard for equities research: one‑year price analysis with a 50‑day moving average, top performers by growth, and key metrics per ticker with paginated detail.</p>
+          <p>A Python web dashboard for equities research: one-year price analysis with a 50-day moving average, top performers by growth, and key metrics per ticker with paginated detail.</p>
           <ul>
             <li>Ticker selector drives every panel on the page</li>
-            <li>Price, 52‑week range and volume pulled and cached per symbol</li>
+            <li>Price, 52-week range and volume pulled and cached per symbol</li>
           </ul>
           <div class="foot"><span class="mono">Python · pandas · Plotly · Dash</span></div>
         </div>
@@ -427,34 +429,34 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         <div class="mono">02 — Power BI</div>
         <h2>Reports leadership opens every Monday.</h2>
       </div>
-      <p class="lead">Executive views that answer the question in one screen, with the detail one click away. Below is a live sample built the way I build production reports.</p>
+      <p class="lead">Executive views that answer the question in one screen, with the detail one click away. Below is an interactive sample built the way I build production reports.</p>
     </div>
 
     <div class="report rv" id="report">
       <div class="report-top">
-        <div class="report-title"><span class="dot"></span>E‑commerce performance · Executive view</div>
+        <div class="report-title"><span class="dot"></span>E-commerce performance · Executive view</div>
         <div class="filters">
-          <span class="filter"><b>Last 12 months</b><svg viewBox="0 0 24 24" fill="none"><path d="m6 9 6 6 6-6"/></svg></span>
-          <span class="filter">Channel <b>All</b><svg viewBox="0 0 24 24" fill="none"><path d="m6 9 6 6 6-6"/></svg></span>
-          <span class="filter">Region <b>US</b><svg viewBox="0 0 24 24" fill="none"><path d="m6 9 6 6 6-6"/></svg></span>
+          <span class="filter"><b>Last 12 months</b><svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="m6 9 6 6 6-6"/></svg></span>
+          <span class="filter">Channel <b>All</b><svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="m6 9 6 6 6-6"/></svg></span>
+          <span class="filter">Region <b>US</b><svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="m6 9 6 6 6-6"/></svg></span>
           <span class="sample">Sample data</span>
         </div>
       </div>
 
       <div class="tiles">
-        <div class="tile"><span class="label">Net revenue</span><span class="value">$12.4M</span><span class="delta"><b><svg viewBox="0 0 24 24"><path d="M12 19V5m0 0-6 6m6-6 6 6"/></svg>8.3%</b> vs prior 12 months</span></div>
-        <div class="tile"><span class="label">Orders</span><span class="value">148.2K</span><span class="delta"><b><svg viewBox="0 0 24 24"><path d="M12 19V5m0 0-6 6m6-6 6 6"/></svg>5.1%</b> vs prior 12 months</span></div>
-        <div class="tile"><span class="label">Conversion rate</span><span class="value">3.4%</span><span class="delta"><b><svg viewBox="0 0 24 24"><path d="M12 19V5m0 0-6 6m6-6 6 6"/></svg>0.3 pts</b> vs prior 12 months</span></div>
+        <div class="tile"><span class="label">Net revenue</span><span class="value">$12.4M</span><span class="delta"><b><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 19V5m0 0-6 6m6-6 6 6"/></svg>8.3%</b> vs prior 12 months</span></div>
+        <div class="tile"><span class="label">Orders</span><span class="value">148.2K</span><span class="delta"><b><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 19V5m0 0-6 6m6-6 6 6"/></svg>5.1%</b> vs prior 12 months</span></div>
+        <div class="tile"><span class="label">Conversion rate</span><span class="value">3.4%</span><span class="delta"><b><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 19V5m0 0-6 6m6-6 6 6"/></svg>0.3 pts</b> vs prior 12 months</span></div>
         <div class="tile"><span class="label">Forecast accuracy</span><span class="value">97.8%</span><span class="delta">MAPE 2.2% across 12 monthly forecasts</span></div>
       </div>
 
       <div class="panels">
         <div class="panel">
           <div class="panel-head">
-            <h4>Monthly revenue · actual vs forecast</h4>
+            <h3>Monthly revenue · actual vs forecast</h3>
             <div class="legend"><span><i style="background:#17a672"></i>Actual</span><span><i style="background:#d9722f"></i>Forecast</span></div>
           </div>
-          <div class="scroll-x"><svg class="chart" id="line" viewBox="0 0 780 272" data-months="Sep,Oct,Nov,Dec,Jan,Feb,Mar,Apr,May,Jun,Jul,Aug" data-actual="820,760,860,900,980,960,1020,1090,1060,1150,1320,1480" data-forecast="800,790,850,920,960,980,1010,1070,1080,1130,1280,1440" data-x0="52" data-x1="704" role="img" aria-label="Line chart of monthly revenue, actual versus forecast, for the last twelve months. Actual ends at 1.48 million dollars in August.">
+          <div class="scroll-x"><svg class="chart" id="line" viewBox="0 0 780 272" data-months="Sep,Oct,Nov,Dec,Jan,Feb,Mar,Apr,May,Jun,Jul,Aug" data-actual="820,760,860,900,980,960,1020,1090,1060,1150,1320,1480" data-forecast="800,790,850,920,960,980,1010,1070,1080,1130,1280,1440" data-x0="52" data-x1="704" role="group" aria-label="Line chart of monthly revenue, actual versus forecast, for the last twelve months. Actual ends at 1.48 million dollars in August.">
             <line class="grid" x1="52" x2="704" y1="24" y2="24"/><line class="grid" x1="52" x2="704" y1="76" y2="76"/><line class="grid" x1="52" x2="704" y1="128" y2="128"/><line class="grid" x1="52" x2="704" y1="180" y2="180"/><line class="axis" x1="52" x2="704" y1="232" y2="232"/>
             <text x="44" y="28" text-anchor="end">$1.6M</text><text x="44" y="80" text-anchor="end">$1.2M</text><text x="44" y="132" text-anchor="end">$800K</text><text x="44" y="184" text-anchor="end">$400K</text><text x="44" y="236" text-anchor="end">0</text>
             <text x="52" y="256" text-anchor="middle">Sep</text><text x="111.3" y="256" text-anchor="middle">Oct</text><text x="170.5" y="256" text-anchor="middle">Nov</text><text x="229.8" y="256" text-anchor="middle">Dec</text><text x="289.1" y="256" text-anchor="middle">Jan</text><text x="348.4" y="256" text-anchor="middle">Feb</text><text x="407.6" y="256" text-anchor="middle">Mar</text><text x="466.9" y="256" text-anchor="middle">Apr</text><text x="526.2" y="256" text-anchor="middle">May</text><text x="585.5" y="256" text-anchor="middle">Jun</text><text x="644.7" y="256" text-anchor="middle">Jul</text><text x="704" y="256" text-anchor="middle">Aug</text>
@@ -467,35 +469,35 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
             <text class="lbl" x="714" y="43" font-weight="500">$1.48M</text>
             <rect class="hit" x="52" y="24" width="652" height="208"/>
           </svg></div>
-          <div class="tip" id="tip"></div>
+          <div class="tip" id="tip" aria-live="polite"></div>
         </div>
 
         <div class="panel">
-          <div class="panel-head"><h4>Revenue by channel</h4><span class="mono" style="text-transform:none;letter-spacing:0">Last 12 months</span></div>
-          <svg class="chart" id="bars" viewBox="0 0 380 194" role="img" aria-label="Bar chart of revenue by channel: Amazon 4.9 million, Walmart 2.6 million, Shopify DTC 2.3 million, Salesforce B2B 1.7 million, Other 0.9 million.">
+          <div class="panel-head"><h3>Revenue by channel</h3><span class="mono" style="text-transform:none;letter-spacing:0">Last 12 months</span></div>
+          <svg class="chart" id="bars" viewBox="0 0 380 194" role="group" aria-label="Bar chart of revenue by channel: Amazon 4.9 million, Walmart 2.6 million, DTC site 2.3 million, Salesforce B2B 1.7 million, Other 0.9 million.">
             <line class="axis" x1="104" x2="104" y1="8" y2="190"/>
             <text class="lbl" x="96" y="27" text-anchor="end">Amazon</text>
             <path class="bar" data-label="Amazon" data-value="$4.9M · 61.4K orders" d="M104,14 h231.2 a4,4 0 0 1 4,4 v10 a4,4 0 0 1 -4,4 H104 Z" fill="#17a672"/><text x="347" y="27">$4.9M</text>
             <text class="lbl" x="96" y="65" text-anchor="end">Walmart</text>
             <path class="bar" data-label="Walmart" data-value="$2.6M · 33.8K orders" d="M104,52 h120.8 a4,4 0 0 1 4,4 v10 a4,4 0 0 1 -4,4 H104 Z" fill="#17a672"/><text x="237" y="65">$2.6M</text>
-            <text class="lbl" x="96" y="103" text-anchor="end">Shopify DTC</text>
-            <path class="bar" data-label="Shopify DTC" data-value="$2.3M · 24.1K orders" d="M104,90 h106.4 a4,4 0 0 1 4,4 v10 a4,4 0 0 1 -4,4 H104 Z" fill="#17a672"/><text x="222" y="103">$2.3M</text>
+            <text class="lbl" x="96" y="103" text-anchor="end">DTC site</text>
+            <path class="bar" data-label="DTC site" data-value="$2.3M · 24.1K orders" d="M104,90 h106.4 a4,4 0 0 1 4,4 v10 a4,4 0 0 1 -4,4 H104 Z" fill="#17a672"/><text x="222" y="103">$2.3M</text>
             <text class="lbl" x="96" y="141" text-anchor="end">Salesforce B2B</text>
             <path class="bar" data-label="Salesforce B2B" data-value="$1.7M · 9.6K orders" d="M104,128 h77.6 a4,4 0 0 1 4,4 v10 a4,4 0 0 1 -4,4 H104 Z" fill="#17a672"/><text x="194" y="141">$1.7M</text>
             <text class="lbl" x="96" y="179" text-anchor="end">Other</text>
             <path class="bar" data-label="Other" data-value="$0.9M · 19.3K orders" d="M104,166 h39.2 a4,4 0 0 1 4,4 v10 a4,4 0 0 1 -4,4 H104 Z" fill="#17a672"/><text x="155" y="179">$0.9M</text>
           </svg>
-          <div class="tip" id="tip2"></div>
+          <div class="tip" id="tip2" aria-live="polite"></div>
         </div>
 
         <div class="panel table-panel">
-          <div class="panel-head"><h4>Channel detail</h4><span class="mono" style="text-transform:none;letter-spacing:0">Revenue, orders, average order value, year over year</span></div>
+          <div class="panel-head"><h3>Channel detail</h3><span class="mono" style="text-transform:none;letter-spacing:0">Revenue, orders, average order value, year over year</span></div>
           <table class="rt">
-            <thead><tr><th>Channel</th><th>Revenue</th><th>Orders</th><th>AOV</th><th>YoY</th></tr></thead>
+            <thead><tr><th scope="col">Channel</th><th scope="col">Revenue</th><th scope="col">Orders</th><th scope="col">AOV</th><th scope="col">YoY</th></tr></thead>
             <tbody>
               <tr><td class="ch"><i></i>Amazon</td><td>$4.9M</td><td>61.4K</td><td>$80</td><td class="up">+9.2%</td></tr>
               <tr><td class="ch"><i></i>Walmart</td><td>$2.6M</td><td>33.8K</td><td>$77</td><td class="up">+12.6%</td></tr>
-              <tr><td class="ch"><i></i>Shopify DTC</td><td>$2.3M</td><td>24.1K</td><td>$95</td><td class="up">+4.8%</td></tr>
+              <tr><td class="ch"><i></i>DTC site</td><td>$2.3M</td><td>24.1K</td><td>$95</td><td class="up">+4.8%</td></tr>
               <tr><td class="ch"><i></i>Salesforce B2B</td><td>$1.7M</td><td>9.6K</td><td>$177</td><td class="up">+6.1%</td></tr>
               <tr><td class="ch"><i></i>Other</td><td>$0.9M</td><td>19.3K</td><td>$47</td><td class="dn">−2.4%</td></tr>
             </tbody>
@@ -511,15 +513,15 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       </figure>
       <figure class="gal">
         <div class="shot"><img src="assets/pbi-cars.jpg" alt="Power BI car sales report with year-over-year revenue by month, sales by gender, share by vehicle type and a year-over-year change table by make" loading="lazy" width="1600" height="884"></div>
-        <figcaption><b>Year‑over‑year sales analysis</b>Monthly revenue by year, share by vehicle type, and a conditional‑formatted change table by make.</figcaption>
+        <figcaption><b>Year-over-year sales analysis</b>Monthly revenue by year, share by vehicle type, and a conditional-formatted change table by make.</figcaption>
       </figure>
     </div>
 
     <div class="pbi-list rv">
-      <div><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/><circle cx="19" cy="18" r="2"/></svg><b>Star‑schema models</b>Clean fact and dimension tables with DAX measures that agree with finance.</div>
-      <div><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg><b>Scheduled refresh</b>Straight from BigQuery, SQL Server and marketplace APIs, no manual exports.</div>
-      <div><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><b>Row‑level security</b>One report, department‑specific views, governed workspaces.</div>
-      <div><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg><b>Executive and mobile layouts</b>Designed to be read in a meeting or on a phone, not just on a monitor.</div>
+      <div><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/><circle cx="19" cy="18" r="2"/></svg><b>Star-schema models</b>Clean fact and dimension tables with DAX measures that agree with finance.</div>
+      <div><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg><b>Scheduled refresh</b>Straight from BigQuery, SQL databases and marketplace APIs, no manual exports.</div>
+      <div><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><b>Row-level security</b>One report, department-specific views, governed workspaces.</div>
+      <div><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg><b>Executive and mobile layouts</b>Designed to be read in a meeting or on a phone, not just on a monitor.</div>
     </div>
   </div>
 </section>
@@ -536,19 +538,19 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
     <div class="three">
       <div class="ai rv">
-        <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-8 9"/></svg></div>
+        <div class="ic"><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-8 9"/></svg></div>
         <h3>Vision models for product data</h3>
-        <p>Photos in, structured listing data out. A local Qwen3‑VL model reads apparel photos and drafts titles, attributes and descriptions; a QA gate validates every field before the listing is written.</p>
-        <div class="how">Ollama · Qwen3‑VL · Python · schema validation</div>
+        <p>Photos in, structured fields out. Open vision-language models run locally, so product images become titles, attributes and descriptions at no per-call cost, and every field is schema-checked before it is used.</p>
+        <div class="how">Ollama · Qwen3-VL · Python · schema validation</div>
       </div>
       <div class="ai rv">
-        <div class="ic"><svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg></div>
+        <div class="ic"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg></div>
         <h3>Document extraction</h3>
-        <p>Invoices and intake forms turned into clean records: OCR for the text, a language model for the fields, rules for the validation, and a human queue for the exceptions. Audit trail kept for every document.</p>
+        <p>OCR reads the page, a language model fills the fields, rules validate them, and anything uncertain lands in a human queue. An audit trail is kept for every document that passes through.</p>
         <div class="how">OCR · LLM extraction · validation rules · exception routing</div>
       </div>
       <div class="ai rv">
-        <div class="ic"><svg viewBox="0 0 24 24"><path d="m8 9 3 3-3 3M13 15h3"/><rect x="3" y="4" width="18" height="16" rx="2"/></svg></div>
+        <div class="ic"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m8 9 3 3-3 3M13 15h3"/><rect x="3" y="4" width="18" height="16" rx="2"/></svg></div>
         <h3>Agentic workflows with Claude Code</h3>
         <p>Coding agents that scaffold pipelines, run QA gates and maintain repos, with verification steps a person signs off on. This site was designed in Claude Design and built with Claude Code.</p>
         <div class="how">Claude Code · scripted gates · reproducible toolchains</div>
@@ -576,25 +578,25 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         <div class="when"><b>Dec 2023 — Present</b>Bolingbrook, IL</div>
         <div>
           <h3>Data Scientist</h3>
-          <div class="co">WeatherTech · automotive accessories, e‑commerce at scale</div>
+          <div class="co">WeatherTech · automotive accessories, e-commerce at scale</div>
           <ul>
-            <li>Architected the organization's end‑to‑end data analysis process and set the foundation for analytics across departments</li>
+            <li>Architected the organization's end-to-end data analysis process and set the foundation for analytics across departments</li>
             <li>Engineered and deployed BigQuery infrastructure, streamlining storage and accelerating queries on large datasets</li>
             <li>Built marketplace API integrations for Amazon, Walmart and Salesforce that feed a single sales model</li>
             <li>Developed revenue forecasting models and partnered with data engineers on KPI reporting pipelines</li>
-            <li>Delivered data‑backed presentations to executive leadership and built dashboards in Power BI, Tableau and native ERP tools</li>
+            <li>Delivered data-backed presentations to executive leadership and built dashboards in Power BI, Tableau and native ERP tools</li>
           </ul>
         </div>
       </div>
       <div class="job rv">
         <div class="when"><b>Nov 2022 — Nov 2023</b>Bolingbrook, IL</div>
         <div>
-          <h3>E‑Commerce Data Analyst</h3>
+          <h3>E-Commerce Data Analyst</h3>
           <div class="co">WeatherTech</div>
           <ul>
-            <li>Built ad‑hoc dashboards in Power BI, Tableau and Google Analytics for real‑time monitoring of sales, conversion and customer behavior</li>
+            <li>Built ad-hoc dashboards in Power BI, Tableau and Google Analytics for real-time monitoring of sales, conversion and customer behavior</li>
             <li>Analyzed sales and customer data across sources to improve segmentation, targeting and personalization</li>
-            <li>Defined and tracked e‑commerce KPIs across platforms, reconciling Google Analytics, Salesforce and internal systems</li>
+            <li>Defined and tracked e-commerce KPIs across platforms, reconciling Google Analytics, Salesforce and internal systems</li>
             <li>Owned data cleaning for all company analysis and reporting</li>
           </ul>
         </div>
@@ -619,7 +621,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
           <ul>
             <li>Market research on demographics, consumer behavior and competition to pick campaign locations</li>
             <li>GIS mapping for targeted campaigns and Power BI models for strategic planning</li>
-            <li>Marketing performance dashboards with real‑time visibility into campaign effectiveness</li>
+            <li>Marketing performance dashboards with real-time visibility into campaign effectiveness</li>
           </ul>
         </div>
       </div>
@@ -629,11 +631,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <div class="card rv">
         <div class="tags"><span class="tag">Education</span></div>
         <h3>University of Illinois Chicago</h3>
-        <p>B.S. Information &amp; Decision Sciences, Data Analytics concentration. Honors College. December 2021.</p>
+        <p>B.S. Information &amp; Decision Sciences (Data Analytics). Honors College. December 2021.</p>
       </div>
       <div class="card rv">
         <div class="tags"><span class="tag">Certification</span></div>
-        <h3>Microsoft PL‑300</h3>
+        <h3>Microsoft PL-300</h3>
         <p>Power BI Data Analyst Associate: data modeling, DAX, visualization, deployment and security.</p>
       </div>
     </div>
@@ -653,8 +655,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <div class="skill"><h3>Analytics &amp; BI</h3><div class="chips"><span class="chip">Power BI</span><span class="chip">DAX</span><span class="chip">Tableau</span><span class="chip">Google Analytics</span><span class="chip">Excel</span><span class="chip">GIS mapping</span></div></div>
       <div class="skill"><h3>Forecasting &amp; modeling</h3><div class="chips"><span class="chip">Time series</span><span class="chip">Python</span><span class="chip">R</span><span class="chip">pandas</span><span class="chip">Plotly / Dash</span></div></div>
       <div class="skill"><h3>AI &amp; automation</h3><div class="chips"><span class="chip">LLM pipelines</span><span class="chip">Vision models</span><span class="chip">Ollama</span><span class="chip">Claude Code</span><span class="chip">OCR</span><span class="chip">Scheduling</span></div></div>
-      <div class="skill"><h3>Platforms</h3><div class="chips"><span class="chip">Amazon SP‑API</span><span class="chip">Walmart Marketplace</span><span class="chip">Salesforce</span><span class="chip">Shopify</span><span class="chip">ERP reporting</span></div></div>
-      <div class="skill"><h3>Ways of working</h3><div class="chips"><span class="chip">Executive presentations</span><span class="chip">KPI definition</span><span class="chip">Cross‑functional delivery</span><span class="chip">Git</span></div></div>
+      <div class="skill"><h3>Platforms</h3><div class="chips"><span class="chip">Amazon SP-API</span><span class="chip">Walmart Marketplace</span><span class="chip">Salesforce</span><span class="chip">ERP reporting</span></div></div>
+      <div class="skill"><h3>Ways of working</h3><div class="chips"><span class="chip">Executive presentations</span><span class="chip">KPI definition</span><span class="chip">Cross-functional delivery</span><span class="chip">Git</span></div></div>
     </div>
   </div>
 </section>
@@ -665,11 +667,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <div>
         <div class="mono">06 — Contact</div>
         <h2>Have a data problem? Let's talk.</h2>
-        <p class="lead">Full‑time roles, contract work, and dashboard or automation projects. Based in the Chicago area, open to remote.</p>
-        <a class="email" href="mailto:imadqureshi2@gmail.com"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>imadqureshi2@gmail.com</a>
+        <p class="lead">Full-time roles, contract work, and dashboard or automation projects. Based in the Chicago area.</p>
+        <a class="email" href="mailto:imadqureshi2@gmail.com"><svg aria-hidden="true" class="icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>imadqureshi2@gmail.com</a>
       </div>
       <div class="list">
-        <a href="https://www.linkedin.com/in/imad-qureshi-811854208/" target="_blank" rel="noopener">LinkedIn <span>linkedin.com/in/imad-qureshi</span></a>
+        <a href="https://www.linkedin.com/in/imad-qureshi-811854208/" target="_blank" rel="noopener">LinkedIn <span>linkedin.com/in/imad-qureshi-811854208</span></a>
         <a href="https://github.com/imadq" target="_blank" rel="noopener">GitHub <span>github.com/imadq</span></a>
         <a href="https://www.upwork.com/freelancers/~013ce322fad7038911" target="_blank" rel="noopener">Upwork <span>freelance profile</span></a>
         <a href="https://www.fiverr.com/s/P2XEExg" target="_blank" rel="noopener">Fiverr <span>freelance profile</span></a>
@@ -684,7 +686,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <footer>
   <div class="wrap">
     <span>© 2026 Imad Qureshi · Bolingbrook, IL</span>
-    <span>Designed in Claude Design, built with Claude Code, hosted on GitHub Pages.</span>
+    <span>Hosted on GitHub Pages.</span>
   </div>
 </footer>
 

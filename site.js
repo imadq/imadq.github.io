@@ -11,9 +11,9 @@
       var open = links.classList.toggle('open');
       menu.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
-    links.addEventListener('click', function (e) {
-      if (e.target.tagName === 'A') { links.classList.remove('open'); menu.setAttribute('aria-expanded', 'false'); }
-    });
+    function closeMenu() { links.classList.remove('open'); menu.setAttribute('aria-expanded', 'false'); }
+    links.addEventListener('click', function (e) { if (e.target.tagName === 'A') closeMenu(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMenu(); });
   }
 
   /* 2. scroll reveal */
@@ -55,9 +55,9 @@
     var yOf = function (v) { return 232 - v * 0.13; };
     var xOf = function (i) { return x0 + i * (x1 - x0) / (months.length - 1); };
     var hit = svg.querySelector('.hit');
-    var panel = svg.parentElement;
+    var panel = svg.closest('.panel');
 
-    function show(i, clientX) {
+    function show(i) {
       var vx = xOf(i);
       xhair.setAttribute('x1', vx); xhair.setAttribute('x2', vx); xhair.style.opacity = 1;
       dotA.setAttribute('cx', vx); dotA.setAttribute('cy', yOf(actual[i]));
@@ -85,7 +85,7 @@
       var vx = (ev.clientX - sr.left) / sr.width * 780;
       var i = Math.round((vx - x0) / ((x1 - x0) / (months.length - 1)));
       i = Math.max(0, Math.min(months.length - 1, i));
-      show(i, ev.clientX);
+      show(i);
     });
     hit.addEventListener('pointerleave', hide);
     /* keyboard: arrow keys walk the months */
@@ -104,7 +104,7 @@
   var bars = document.getElementById('bars');
   var tip2 = document.getElementById('tip2');
   if (bars && tip2) {
-    var panel2 = bars.parentElement;
+    var panel2 = bars.closest('.panel');
     bars.querySelectorAll('.bar').forEach(function (bar) {
       bar.setAttribute('tabindex', '0');
       function on(ev) {
