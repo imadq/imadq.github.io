@@ -225,6 +225,8 @@ table.rt .dn{color:var(--bad)}
 .ab-arm label{display:flex;flex-direction:column;gap:5px;font-size:12px;color:var(--d-muted)}
 .ab-arm input{width:100%;background:var(--d-card);border:1px solid var(--d-line-2);color:var(--d-ink);border-radius:8px;padding:8px 10px;font:inherit;font-size:14px;font-variant-numeric:tabular-nums;color-scheme:dark}
 .ab-arm input:focus-visible{outline:2px solid var(--s1);outline-offset:1px}
+.ab-arm input[aria-invalid="true"]{border-color:var(--bad)}
+.ab-small{display:block;margin-top:8px;color:var(--d-muted);font-size:13.5px}
 .tile .value.good{color:var(--good)}
 .tile .value.bad{color:var(--bad)}
 #ab-verdict{font-size:15.5px;color:var(--d-ink-2);line-height:1.6}
@@ -718,23 +720,23 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <div class="ab-grid">
         <div class="panel">
           <div class="panel-head"><h3>Inputs</h3><span class="mono" style="text-transform:none;letter-spacing:0">Edit and everything recomputes</span></div>
-          <div class="ab-arm"><b><i style="background:#9298a6"></i>Control</b><label>Visitors<input id="c-n" type="number" min="1" step="1" value="12480"></label><label>Conversions<input id="c-c" type="number" min="0" step="1" value="412"></label></div>
-          <div class="ab-arm"><b><i style="background:#17a672"></i>Variant</b><label>Visitors<input id="v-n" type="number" min="1" step="1" value="12510"></label><label>Conversions<input id="v-c" type="number" min="0" step="1" value="468"></label></div>
+          <div class="ab-arm"><b><i style="background:#9298a6"></i>Control</b><label>Visitors<input id="ab-cn" type="number" min="1" step="1" value="12480"></label><label>Conversions<input id="ab-cc" type="number" min="0" step="1" value="412"></label></div>
+          <div class="ab-arm"><b><i style="background:#17a672"></i>Variant</b><label>Visitors<input id="ab-vn" type="number" min="1" step="1" value="12510"></label><label>Conversions<input id="ab-vc" type="number" min="0" step="1" value="468"></label></div>
         </div>
         <div class="panel">
           <div class="panel-head"><h3>Conversion rate by arm</h3><span class="mono" style="text-transform:none;letter-spacing:0">Whiskers are the interval</span></div>
           <svg class="chart" id="ab-chart" viewBox="0 0 380 118" role="img" aria-label="Conversion rate by arm with intervals"></svg>
         </div>
         <div class="tiles ab-tiles">
-          <div class="tile" id="t-c"><span class="label">Control rate</span><span class="value">—</span><span class="delta"></span></div>
-          <div class="tile" id="t-v"><span class="label">Variant rate</span><span class="value">—</span><span class="delta"></span></div>
-          <div class="tile" id="t-l"><span class="label">Lift</span><span class="value">—</span><span class="delta"></span></div>
-          <div class="tile" id="t-p"><span class="label">p-value</span><span class="value">—</span><span class="delta"></span></div>
+          <div class="tile" id="ab-tc"><span class="label">Control rate</span><span class="value">—</span><span class="delta"></span></div>
+          <div class="tile" id="ab-tv"><span class="label">Variant rate</span><span class="value">—</span><span class="delta"></span></div>
+          <div class="tile" id="ab-tl"><span class="label">Lift</span><span class="value">—</span><span class="delta"></span></div>
+          <div class="tile" id="ab-tp"><span class="label">p-value</span><span class="value">—</span><span class="delta"></span></div>
         </div>
         <div class="panel ab-verdict">
           <div class="panel-head"><h3>Verdict</h3></div>
           <p id="ab-verdict" aria-live="polite"></p>
-          <p class="ab-method">Method: two-proportion z-test on the difference in conversion rates, with the interval built from the unpooled standard error and Wilson intervals on each arm. Sample size uses 80% power at the chosen confidence. Same maths as a stats package, written out so the readout can live on one screen.</p>
+          <p class="ab-method">Method: two-proportion z-test for the p-value. The interval on the difference is Newcombe's, built from a Wilson interval on each arm, so it still behaves when an arm has zero or all conversions; the verdict follows that interval. The lift interval comes from the log of the rate ratio. Sample size uses 80% power at the chosen confidence. Same maths as a stats package, written out so the readout fits on one screen.</p>
         </div>
       </div>
       <noscript><div class="noscript-note">The readout is computed in the browser and needs JavaScript.</div></noscript>
